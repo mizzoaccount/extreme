@@ -47,8 +47,9 @@ const HeroSection = () => {
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
   const constraintsRef = useRef(null);
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
 
   // The minimum distance to consider a swipe
   const minSwipeDistance = 50; 
@@ -72,11 +73,11 @@ const HeroSection = () => {
   }, [hovered]);
 
   // Touch handlers for mobile swipe
-  const onTouchStart = (e) => {
+  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     setTouchStart(e.targetTouches[0].clientX);
   };
 
-  const onTouchMove = (e) => {
+  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     setTouchEnd(e.targetTouches[0].clientX);
   };
 
