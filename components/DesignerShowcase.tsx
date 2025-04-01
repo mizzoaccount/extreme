@@ -56,7 +56,8 @@ const designerBrands = [
 ];
 
 const DesignerShowcase = () => {
-  const [hoveredBrand, setHoveredBrand] = useState(null);
+ // const [hoveredBrand, setHoveredBrand] = useState(null);
+  const [hoveredBrand, setHoveredBrand] = useState<number | null>(null); 
 
   // Floating shapes data
   const floatingShapes = [
