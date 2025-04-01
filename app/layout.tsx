@@ -52,8 +52,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Legislative Leadership Institute | Governance & Policy Excellence",
-  description: "Empowering legislative bodies with expert training, policy formulation, and governance consulting services for transformative public sector leadership",
+  title: "Extreme | Collections",
+  description: "Shop your style",
 };
 
 export default function RootLayout({
