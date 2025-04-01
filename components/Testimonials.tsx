@@ -3,6 +3,10 @@ import { motion, useTransform, useScroll, AnimatePresence } from "framer-motion"
 import { useState, useRef } from "react";
 import { Star, ChevronLeft, ChevronRight, Quote, ArrowRight } from "lucide-react";
 
+interface StarRatingProps {
+  rating: number;
+}
+
 // Testimonial data
 const testimonials = [
   {
@@ -70,7 +74,8 @@ const Testimonials = () => {
   };
 
   // Star rating component
-  const StarRating = ({ rating }) => {
+ 
+const StarRating = ({ rating }: StarRatingProps) => {
     return (
       <div className="flex">
         {[...Array(5)].map((_, i) => (

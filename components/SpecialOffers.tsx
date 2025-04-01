@@ -43,10 +43,13 @@ const specialOffers = [
   },
 ];
 
+
 const SpecialOffers = () => {
   const [offers, setOffers] = useState(specialOffers);
   const [activeOffer, setActiveOffer] = useState(0);
-  const intervalRef = useRef();
+  //const intervalRef = useRef();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
 
   // Countdown timer effect
   useEffect(() => {
@@ -59,7 +62,11 @@ const SpecialOffers = () => {
       );
     }, 1000);
 
-    return () => clearInterval(intervalRef.current);
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, []);
 
   // Auto-rotate offers every 5 seconds
@@ -70,15 +77,15 @@ const SpecialOffers = () => {
     return () => clearInterval(rotationInterval);
   }, [offers.length]);
 
-  const formatTime = (seconds) => {
+  const formatTime = (seconds: number) => {
     const days = Math.floor(seconds / (24 * 60 * 60));
     const hours = Math.floor((seconds % (24 * 60 * 60)) / (60 * 60));
     const mins = Math.floor((seconds % (60 * 60)) / 60);
     const secs = seconds % 60;
-
+  
     return {
       days: days.toString().padStart(2, "0"),
-      hours: hours.toString().padStart(2, "0"),
+      hours: hours.toString().padStart(2, "0"), 
       mins: mins.toString().padStart(2, "0"),
       secs: secs.toString().padStart(2, "0"),
     };
