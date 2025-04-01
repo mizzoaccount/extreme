@@ -1,6 +1,5 @@
 // pages/index.tsx
 import Hero from '@/components/Hero';
-import Footer from '@/components/Footer';
 import Navbar from '@/components/Header';
 import FeaturedCollections from '@/components/FeaturedCollections';
 import SpecialOffers from '@/components/SpecialOffers';

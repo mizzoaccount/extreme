@@ -65,7 +65,8 @@ const spotlights: Celebrity[] = [
 ]; 
 const CelebritySpotlight = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedCelebrity, setSelectedCelebrity] = useState(null);
+ //const [selectedCelebrity, setSelectedCelebrity] = useState(null);
+  const [selectedCelebrity, setSelectedCelebrity] = useState<Celebrity | null>(null);
   const [direction, setDirection] = useState(0);
   const ref = useRef(null);
 
