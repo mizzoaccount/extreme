@@ -11,8 +11,8 @@ interface AdminTableProps {
   }[];
   data: any[];
   onAdd: () => void;
-  onEdit: (id: number) => void;
-  onDelete: (id: number) => void;
+  onEdit: (_id: number) => void;
+  onDelete: (_id: number) => void;
 }
 
 export const AdminTable = ({

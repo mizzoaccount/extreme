@@ -1702,7 +1702,7 @@ const KenyanSocialApp = () => {
     <div className="relative max-w-md mx-auto h-[800px] bg-gray-50 overflow-hidden border border-gray-200 rounded-2xl shadow-xl flex flex-col">
       {/* Header */}
       <header className="bg-white border-b border-gray-200 p-4 flex justify-between items-center">
-        <h1 className="font-bold text-xl text-blue-600">KenyaConnect</h1>
+        <h1 className="font-bold text-xl text-blue-600">BomaSocial</h1>
         <div className="flex items-center space-x-3">
           <button className="p-1">
             <FiBell className="w-5 h-5" />
