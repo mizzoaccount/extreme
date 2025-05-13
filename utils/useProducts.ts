@@ -21,26 +21,40 @@ const useProducts = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/products');
-        if (!response.ok) {
-          throw new Error('Failed to fetch products');
-        }
-        const data = await response.json();
-        setProducts(data.products);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'An unknown error occurred');
-      } finally {
-        setLoading(false);
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+  
+      console.log('Fetching products from:', 'http://localhost:5000/api/products');
+  
+      const response = await fetch('http://localhost:5000/api/products');
+      const data = await response.json();
+  
+      console.log('Response received:', data);
+  
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to fetch products');
       }
-    };
+  
+      setProducts(data.products);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An unknown error occurred');
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchProducts();
   }, []);
 
-  return { products, loading, error };
+  return { 
+    products, 
+    loading, 
+    error,
+    refresh: fetchProducts // Optional: add refresh capability
+  };
 };
 
 export default useProducts;

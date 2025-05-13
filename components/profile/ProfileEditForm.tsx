@@ -96,7 +96,7 @@ export const ProfileEditForm = ({
       </button>
       <button
         type="submit"
-        className="px-6 py-2 bg-[#f4b500] hover:bg-[#d4a017] text-black font-bold rounded-full transition-colors"
+        className="px-6 py-2 bg-[#62aee4] hover:bg-[#4287b8] text-black font-bold rounded-full transition-colors"
       >
         Save Changes
       </button>

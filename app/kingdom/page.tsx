@@ -1194,10 +1194,7 @@ const KingdomConnect = () => {
 
 export default KingdomConnect;*/
 
-
-
-
-"use client"
+/*"use client"
 import { useState } from 'react';
 import { 
   FiHome, FiCompass, FiPlusSquare, FiMusic, FiBell,
@@ -1381,7 +1378,7 @@ const KenyanSocialApp = () => {
 
   const renderHomeTab = () => (
     <div className="pb-4">
-      {/* Stories */}
+      {/* Stories *
       <div className="flex space-x-4 px-4 py-3 overflow-x-auto">
         {[1, 2, 3, 4, 5].map((story) => (
           <div key={story} className="flex flex-col items-center flex-shrink-0">
@@ -1395,7 +1392,7 @@ const KenyanSocialApp = () => {
         ))}
       </div>
 
-      {/* Trending in Kenya */}
+      {/* Trending in Kenya *
       <div className="bg-gray-100 px-4 py-3 mb-3">
         <h3 className="font-bold text-sm mb-2">TRENDING IN KENYA</h3>
         <div className="space-y-2">
@@ -1411,7 +1408,7 @@ const KenyanSocialApp = () => {
         </div>
       </div>
 
-      {/* News from official sources */}
+      {/* News from official sources *
       <div className="px-4 mb-4">
         <div className="flex justify-between items-center mb-3">
           <h2 className="font-bold text-lg flex items-center">
@@ -1444,12 +1441,12 @@ const KenyanSocialApp = () => {
         </div>
       </div>
 
-      {/* Following posts */}
+      {/* Following posts *
       <div className="px-4">
         <h2 className="font-bold text-lg mb-3">From Following</h2>
         {followingPosts.map(post => (
           <div key={post.id} className="bg-white rounded-xl shadow-sm mb-4 overflow-hidden">
-            {/* Post header */}
+            {/* Post header *
             <div className="p-3 flex justify-between items-center">
               <div className="flex items-center space-x-2">
                 <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
@@ -1472,17 +1469,17 @@ const KenyanSocialApp = () => {
               </button>
             </div>
 
-            {/* Post content */}
+            {/* Post content *
             <div className="px-3 pb-2">
               <p className="mb-2">{post.content}</p>
             </div>
 
-            {/* Post image */}
+            {/* Post image *
             <div className="bg-gray-200 h-64 flex items-center justify-center text-gray-500">
               {post.image.replace('.jpg', '')}
             </div>
 
-            {/* Post actions */}
+            {/* Post actions *
             <div className="p-3 flex justify-between">
               <div className="flex space-x-4">
                 <button className="flex items-center space-x-1">
@@ -1510,9 +1507,9 @@ const KenyanSocialApp = () => {
 
   const renderReelsTab = () => (
     <div className="h-full bg-black text-white">
-      {/* Sample reel - in a real app this would be a scrollable component */}
+      {/* Sample reel - in a real app this would be a scrollable component *
       <div className="relative h-full">
-        {/* Reel video placeholder */}
+        {/* Reel video placeholder *
         <div className="absolute inset-0 bg-gray-900 flex items-center justify-center">
           <div className="text-center">
             <div className="w-16 h-16 rounded-full border-4 border-white flex items-center justify-center mb-4 mx-auto">
@@ -1522,7 +1519,7 @@ const KenyanSocialApp = () => {
           </div>
         </div>
         
-        {/* Reel info overlay */}
+        {/* Reel info overlay *
         <div className="absolute bottom-20 left-4 right-4">
           <div className="mb-4">
             <p className="font-medium">@{reels[0].user}</p>
@@ -1534,7 +1531,7 @@ const KenyanSocialApp = () => {
           </div>
         </div>
         
-        {/* Right side actions */}
+        {/* Right side actions *
         <div className="absolute right-4 bottom-20 flex flex-col items-center space-y-5">
           <div className="flex flex-col items-center">
             <button 
@@ -1700,7 +1697,7 @@ const KenyanSocialApp = () => {
 
   return (
     <div className="relative max-w-md mx-auto h-[800px] bg-gray-50 overflow-hidden border border-gray-200 rounded-2xl shadow-xl flex flex-col">
-      {/* Header */}
+      {/* Header *
       <header className="bg-white border-b border-gray-200 p-4 flex justify-between items-center">
         <h1 className="font-bold text-xl text-blue-600">BomaSocial</h1>
         <div className="flex items-center space-x-3">
@@ -1713,7 +1710,7 @@ const KenyanSocialApp = () => {
         </div>
       </header>
 
-      {/* Main Content */}
+      {/* Main Content *
       <main className="flex-1 overflow-y-auto pb-16">
         {activeTab === 'home' && renderHomeTab()}
         {activeTab === 'reels' && renderReelsTab()}
@@ -1722,7 +1719,7 @@ const KenyanSocialApp = () => {
         {activeTab === 'profile' && renderProfileTab()}
       </main>
 
-      {/* Bottom Navigation */}
+      {/* Bottom Navigation *
       <nav className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around">
         <button 
           onClick={() => setActiveTab('home')} 
@@ -1760,7 +1757,7 @@ const KenyanSocialApp = () => {
         </button>
       </nav>
 
-      {/* Create Post Modal */}
+      {/* Create Post Modal *
       {showCreatePost && (
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-10">
           <div className="bg-white rounded-xl w-full max-w-sm p-4">
@@ -1813,7 +1810,7 @@ const KenyanSocialApp = () => {
   );
 };
 
-export default KenyanSocialApp;
+export default KenyanSocialApp;*/
 
 /*"use client"
 import { useState } from 'react';
@@ -3634,3 +3631,1211 @@ const UniversalEcommercePlatform = () => {
 };
 
 export default UniversalEcommercePlatform;*/
+
+
+
+
+"use client"
+import { useState, useEffect } from 'react';
+import { 
+  FiHome, FiCompass, FiPlusSquare, FiMusic, FiBell,
+  FiUser, FiHeart, FiMessageSquare, FiShare2, FiMoreHorizontal,
+  FiClock, FiPlay, FiHeadphones, FiBookmark,
+  FiMapPin, FiSearch
+} from 'react-icons/fi';
+import { IoNewspaperOutline } from 'react-icons/io5';
+import { BsThreeDotsVertical, BsDot, BsGrid3X3, BsBookmark } from 'react-icons/bs';
+import { RiVideoLine } from 'react-icons/ri';
+
+const KenyanSocialApp = () => {
+  const [activeTab, setActiveTab] = useState('home');
+  const [showCreatePost, setShowCreatePost] = useState(false);
+  const [likedPosts, setLikedPosts] = useState([]);
+  const [savedPosts, setSavedPosts] = useState([]);
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Dummy data - Kenyan focused
+  const trendingNow = [
+    { id: 1, title: "Finance Bill 2024", posts: "45.2K" },
+    { id: 2, title: "AFCON Qualifiers", posts: "38.7K" },
+    { id: 3, title: "Nairobi Expressway", posts: "22.1K" },
+    { id: 4, title: "Mpesa New Features", posts: "18.9K" }
+  ];
+
+  const newsStories = [
+    {
+      id: 1,
+      title: "Parliament Approves New Finance Bill Amid Protests",
+      summary: "The National Assembly has passed the controversial Finance Bill 2024 with amendments after lengthy debates.",
+      source: "Daily Nation",
+      time: "1h ago",
+      image: "finance-bill.jpg",
+      category: "Politics"
+    },
+    {
+      id: 2,
+      title: "Kenya Wins Bid to Host 2027 AFCON Tournament",
+      summary: "East Africa will host the continental showpiece for the first time in history.",
+      source: "Standard Sports",
+      time: "3h ago",
+      image: "afcon.jpg",
+      category: "Sports"
+    },
+    {
+      id: 3,
+      title: "New Mpesa Feature Allows Cross-Network Transfers",
+      summary: "Safaricom announces interoperability with Airtel and Telkom money platforms starting next month.",
+      source: "Techweez",
+      time: "5h ago",
+      image: "mpesa.jpg",
+      category: "Technology"
+    }
+  ];
+
+  const reels = [
+    {
+      id: 1,
+      user: "NairobiFoodie",
+      caption: "Trying the new nyama choma spot in Westlands! 🔥",
+      likes: "12.4K",
+      comments: "842",
+      song: "Original Sound - NairobiFoodie",
+      isLiked: false,
+      isFollowing: false
+    },
+    {
+      id: 2,
+      user: "KOT_Humor",
+      caption: "When your nduthi guy says '5 minutes' 😂 #Nairobi",
+      likes: "45.7K",
+      comments: "3.2K",
+      song: "Sauti Sol - Sura Yako",
+      isLiked: true,
+      isFollowing: true
+    },
+    {
+      id: 3,
+      user: "MaasaiAdventures",
+      caption: "Sunrise at Amboseli #VisitKenya",
+      likes: "8.2K",
+      comments: "312",
+      song: "Original Sound - MaasaiAdventures",
+      isLiked: false,
+      isFollowing: false
+    }
+  ];
+
+  const longVideos = [
+    {
+      id: 1,
+      title: "Full Documentary: The Making of Nairobi",
+      creator: "Kenya Archives",
+      views: "124K",
+      time: "42:15",
+      thumbnail: "nairobi-doc.jpg",
+      category: "Education"
+    },
+    {
+      id: 2,
+      title: "Cooking With Wanjiru: How to Make Githeri Special",
+      creator: "Wanjiru Kitchen",
+      views: "87K",
+      time: "15:30",
+      thumbnail: "githeri.jpg",
+      category: "Food"
+    },
+    {
+      id: 3,
+      title: "Nairobi Nightlife: Best Clubs to Visit in 2024",
+      creator: "City Buzz",
+      views: "56K",
+      time: "18:45",
+      thumbnail: "nightlife.jpg",
+      category: "Entertainment"
+    }
+  ];
+
+  const podcasts = [
+    {
+      id: 1,
+      title: "The Messy Truth About Kenyan Politics",
+      host: "The Kenya Today Podcast",
+      duration: "58:22",
+      plays: "12.4K",
+      thumbnail: "politics-podcast.jpg",
+      category: "Politics"
+    },
+    {
+      id: 2,
+      title: "Gengetone Revolution: Music & Culture",
+      host: "Sound of Nairobi",
+      duration: "36:45",
+      plays: "8.7K",
+      thumbnail: "gengetone.jpg",
+      category: "Music"
+    },
+    {
+      id: 3,
+      title: "Tech Talk: Kenya's Silicon Savannah",
+      host: "Digital Kenya",
+      duration: "45:10",
+      plays: "6.2K",
+      thumbnail: "tech-podcast.jpg",
+      category: "Technology"
+    }
+  ];
+
+  const followingPosts = [
+    {
+      id: 1,
+      user: {
+        name: "Nairobi Gossip",
+        handle: "@nairobibuzz",
+        avatar: "NG",
+        isVerified: true
+      },
+      content: "Breaking: Popular city club closed by authorities over license issues. More details to follow.",
+      image: "club-closed.jpg",
+      time: "45m ago",
+      likes: "2.4K",
+      comments: "342",
+      shares: "128"
+    },
+    {
+      id: 2,
+      user: {
+        name: "Mwangi",
+        handle: "@mwangist",
+        avatar: "MW",
+        isVerified: false
+      },
+      content: "Traffic on Thika Road is something else today! 2 hours and counting. #NairobiTraffic",
+      image: "thika-traffic.jpg",
+      time: "2h ago",
+      likes: "1.2K",
+      comments: "87",
+      shares: "32"
+    },
+    {
+      id: 3,
+      user: {
+        name: "Kenya Travel",
+        handle: "@kenyatravel",
+        avatar: "KT",
+        isVerified: true
+      },
+      content: "New direct flights from Nairobi to New York starting next month! Book now for early bird discounts.",
+      image: "nbo-jfk.jpg",
+      time: "5h ago",
+      likes: "3.7K",
+      comments: "512",
+      shares: "245"
+    }
+  ];
+
+  const toggleLike = (id, type) => {
+    if (type === 'reel') {
+      setLikedPosts(prev => 
+        prev.includes(id) 
+          ? prev.filter(postId => postId !== id) 
+          : [...prev, id]
+      );
+    }
+    // Can be expanded for other post types
+  };
+
+  const toggleSave = (id) => {
+    setSavedPosts(prev => 
+      prev.includes(id) 
+        ? prev.filter(postId => postId !== id) 
+        : [...prev, id]
+    );
+  };
+
+  const renderDesktopSidebar = () => (
+    <div className="w-64 h-full border-r border-gray-200 bg-white flex flex-col">
+      <div className="p-4">
+        <h1 className="font-bold text-2xl text-blue-600 mb-8">BomaSocial</h1>
+        
+        <nav className="space-y-2">
+          <button 
+            onClick={() => setActiveTab('home')} 
+            className={`flex items-center space-x-3 w-full p-3 rounded-lg ${activeTab === 'home' ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-100'}`}
+          >
+            <FiHome className="w-5 h-5" />
+            <span>Home</span>
+          </button>
+          
+          <button 
+            onClick={() => setActiveTab('reels')} 
+            className={`flex items-center space-x-3 w-full p-3 rounded-lg ${activeTab === 'reels' ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-100'}`}
+          >
+            <FiCompass className="w-5 h-5" />
+            <span>Reels</span>
+          </button>
+          
+          <button 
+            onClick={() => setActiveTab('videos')} 
+            className={`flex items-center space-x-3 w-full p-3 rounded-lg ${activeTab === 'videos' ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-100'}`}
+          >
+            <RiVideoLine className="w-5 h-5" />
+            <span>Videos</span>
+          </button>
+          
+          <button 
+            onClick={() => setActiveTab('podcasts')} 
+            className={`flex items-center space-x-3 w-full p-3 rounded-lg ${activeTab === 'podcasts' ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-100'}`}
+          >
+            <FiHeadphones className="w-5 h-5" />
+            <span>Podcasts</span>
+          </button>
+          
+          <button 
+            onClick={() => setActiveTab('profile')} 
+            className={`flex items-center space-x-3 w-full p-3 rounded-lg ${activeTab === 'profile' ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-100'}`}
+          >
+            <FiUser className="w-5 h-5" />
+            <span>Profile</span>
+          </button>
+        </nav>
+      </div>
+      
+      <div className="p-4 mt-auto">
+        <button 
+          onClick={() => setShowCreatePost(true)}
+          className="w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white py-2.5 rounded-lg font-medium flex items-center justify-center space-x-2"
+        >
+          <FiPlusSquare className="w-5 h-5" />
+          <span>Create Post</span>
+        </button>
+      </div>
+    </div>
+  );
+
+  const renderDesktopHeader = () => (
+    <header className="bg-white border-b border-gray-200 p-4 flex justify-between items-center">
+      <div className="flex-1 max-w-xl mx-4">
+        <div className="relative">
+          <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+          <input 
+            type="text" 
+            placeholder="Search BomaSocial" 
+            className="w-full bg-gray-100 rounded-lg py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white"
+          />
+        </div>
+      </div>
+      
+      <div className="flex items-center space-x-4">
+        <button className="p-2 rounded-full hover:bg-gray-100 relative">
+          <FiBell className="w-5 h-5" />
+          <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+        </button>
+        <button className="p-2 rounded-full hover:bg-gray-100 relative">
+          <FiMessageSquare className="w-5 h-5" />
+          <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+        </button>
+        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+          <span className="font-medium text-blue-600">YP</span>
+        </div>
+      </div>
+    </header>
+  );
+
+  const renderStories = () => (
+    <div className="flex space-x-4 px-4 py-3 overflow-x-auto scrollbar-hide">
+      {[1, 2, 3, 4, 5, 6, 7, 8].map((story) => (
+        <div key={story} className="flex flex-col items-center flex-shrink-0">
+          <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-yellow-400 to-red-500 p-0.5 mb-1">
+            <div className="bg-white rounded-full w-full h-full flex items-center justify-center">
+              <span className="font-bold text-yellow-600">{['NG', 'MW', 'KT', 'FD', 'SP', 'KB', 'NM', 'TL'][story-1]}</span>
+            </div>
+          </div>
+          <span className="text-xs truncate w-16 text-center">{['Nairobi', 'Mwangi', 'Kenya', 'Food', 'Sports', 'Kibaki', 'Nairobi', 'Travel'][story-1]}</span>
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderTrendingNow = () => (
+    <div className="bg-gray-100 px-4 py-3 mb-3 rounded-lg mx-4">
+      <h3 className="font-bold text-sm mb-2">TRENDING IN KENYA</h3>
+      <div className="space-y-2">
+        {trendingNow.map(trend => (
+          <div key={trend.id} className="flex justify-between items-center hover:bg-gray-200 p-2 rounded-lg cursor-pointer">
+            <div>
+              <p className="font-medium">{trend.title}</p>
+              <p className="text-xs text-gray-500">{trend.posts} posts</p>
+            </div>
+            <BsThreeDotsVertical className="text-gray-400" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderNewsCard = (news) => (
+    <div key={news.id} className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+      <div className="relative">
+        <div className="bg-gray-200 h-40 flex items-center justify-center text-gray-500">
+          {news.image.replace('.jpg', '')}
+        </div>
+        <div className="absolute top-2 left-2 bg-blue-600 text-white text-xs px-2 py-1 rounded">
+          {news.category}
+        </div>
+      </div>
+      <div className="p-3">
+        <h3 className="font-bold mb-1">{news.title}</h3>
+        <p className="text-sm text-gray-600 mb-2">{news.summary}</p>
+        <div className="flex justify-between items-center">
+          <span className="text-xs text-gray-500">{news.source} <BsDot className="inline" /> {news.time}</span>
+          <button className="text-blue-600 text-sm font-medium hover:text-blue-800">Read</button>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderPost = (post) => (
+    <div key={post.id} className="bg-white rounded-xl shadow-sm mb-4 overflow-hidden hover:shadow-md transition-shadow">
+      {/* Post header */}
+      <div className="p-3 flex justify-between items-center">
+        <div className="flex items-center space-x-2">
+          <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+            <span className="font-medium text-blue-600">{post.user.avatar}</span>
+          </div>
+          <div>
+            <div className="flex items-center">
+              <p className="font-medium">{post.user.name}</p>
+              {post.user.isVerified && (
+                <svg className="w-4 h-4 ml-1 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg>
+              )}
+            </div>
+            <p className="text-xs text-gray-500">{post.user.handle} <BsDot className="inline" /> {post.time}</p>
+          </div>
+        </div>
+        <button className="p-1 rounded-full hover:bg-gray-100">
+          <BsThreeDotsVertical className="text-gray-400" />
+        </button>
+      </div>
+
+      {/* Post content */}
+      <div className="px-3 pb-2">
+        <p className="mb-2">{post.content}</p>
+      </div>
+
+      {/* Post image */}
+      <div className="bg-gray-200 h-64 flex items-center justify-center text-gray-500">
+        {post.image.replace('.jpg', '')}
+      </div>
+
+      {/* Post actions */}
+      <div className="p-3 flex justify-between">
+        <div className="flex space-x-4">
+          <button className="flex items-center space-x-1 hover:text-red-500">
+            <FiHeart className="w-5 h-5" />
+            <span className="text-sm">{post.likes}</span>
+          </button>
+          <button className="flex items-center space-x-1 hover:text-blue-500">
+            <FiMessageSquare className="w-5 h-5" />
+            <span className="text-sm">{post.comments}</span>
+          </button>
+          <button className="flex items-center space-x-1 hover:text-green-500">
+            <FiShare2 className="w-5 h-5" />
+            <span className="text-sm">{post.shares}</span>
+          </button>
+        </div>
+        <button onClick={() => toggleSave(post.id)} className="hover:text-yellow-500">
+          <FiBookmark className={`w-5 h-5 ${savedPosts.includes(post.id) ? 'text-yellow-500 fill-yellow-500' : ''}`} />
+        </button>
+      </div>
+    </div>
+  );
+
+  const renderVideoCard = (video) => (
+    <div key={video.id} className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+      <div className="relative">
+        <div className="bg-gray-200 aspect-video flex items-center justify-center">
+          <div className="w-12 h-12 rounded-full bg-black bg-opacity-50 flex items-center justify-center">
+            <FiPlay className="w-6 h-6 text-white" />
+          </div>
+        </div>
+        <div className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-xs px-1.5 py-1 rounded">
+          {video.time}
+        </div>
+      </div>
+      <div className="p-3">
+        <h3 className="font-medium mb-1">{video.title}</h3>
+        <p className="text-sm text-gray-600">{video.creator} • {video.views} views</p>
+        <div className="flex mt-2">
+          <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">{video.category}</span>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderPodcastCard = (podcast) => (
+    <div key={podcast.id} className="bg-white rounded-xl shadow-sm p-3 flex hover:shadow-md transition-shadow">
+      <div className="w-16 h-16 bg-gray-200 rounded-lg flex-shrink-0 flex items-center justify-center text-gray-500 mr-3">
+        {podcast.thumbnail.replace('.jpg', '')}
+      </div>
+      <div className="flex-1">
+        <h3 className="font-medium mb-1">{podcast.title}</h3>
+        <p className="text-sm text-gray-600 mb-1">{podcast.host}</p>
+        <div className="flex items-center text-xs text-gray-500">
+          <span>{podcast.duration}</span>
+          <BsDot className="mx-1" />
+          <span>{podcast.plays} plays</span>
+          <BsDot className="mx-1" />
+          <span className="text-blue-600">{podcast.category}</span>
+        </div>
+      </div>
+      <button className="self-center p-2 rounded-full hover:bg-gray-100">
+        <FiPlay className="w-5 h-5 text-blue-600" />
+      </button>
+    </div>
+  );
+
+  const renderHomeTab = () => (
+    <div className="pb-4">
+      {isMobile ? (
+        <>
+          {/* Mobile layout */}
+          {renderStories()}
+          {renderTrendingNow()}
+          
+          <div className="px-4 mb-4">
+            <div className="flex justify-between items-center mb-3">
+              <h2 className="font-bold text-lg flex items-center">
+                <IoNewspaperOutline className="mr-2" /> Kenya News
+              </h2>
+              <button className="text-blue-600 text-sm hover:text-blue-800">See All</button>
+            </div>
+            
+            <div className="space-y-4">
+              {newsStories.slice(0, 2).map(renderNewsCard)}
+            </div>
+          </div>
+
+          {/* Following posts */}
+          <div className="px-4">
+            <h2 className="font-bold text-lg mb-3">From Following</h2>
+            {followingPosts.map(renderPost)}
+          </div>
+        </>
+      ) : (
+        <>
+          {/* Desktop layout */}
+          <div className="grid grid-cols-12 gap-6 p-6">
+            <div className="col-span-8 space-y-6">
+              {/* Create post card */}
+              <div className="bg-white rounded-xl shadow-sm p-4">
+                <div className="flex items-center space-x-3 mb-3">
+                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                    <span className="font-medium text-blue-600">YP</span>
+                  </div>
+                  <button 
+                    onClick={() => setShowCreatePost(true)}
+                    className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full py-2 px-4 text-left transition-colors"
+                  >
+                    What's happening in Kenya today?
+                  </button>
+                </div>
+                <div className="flex justify-between border-t pt-3">
+                  <button className="flex items-center text-gray-600 hover:bg-gray-100 px-3 py-1.5 rounded-lg">
+                    <svg className="w-5 h-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span>Photo</span>
+                  </button>
+                  <button className="flex items-center text-gray-600 hover:bg-gray-100 px-3 py-1.5 rounded-lg">
+                    <RiVideoLine className="w-5 h-5 mr-2 text-gray-500" />
+                    <span>Video</span>
+                  </button>
+                  <button className="flex items-center text-gray-600 hover:bg-gray-100 px-3 py-1.5 rounded-lg">
+                    <FiHeadphones className="w-5 h-5 mr-2 text-gray-500" />
+                    <span>Podcast</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Stories */}
+              <div className="bg-white rounded-xl shadow-sm p-4">
+                <div className="flex justify-between items-center mb-3">
+                  <h3 className="font-bold">Stories</h3>
+                  <button className="text-blue-600 text-sm hover:text-blue-800">See All</button>
+                </div>
+                <div className="flex space-x-4 overflow-x-auto pb-2 scrollbar-hide">
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((story) => (
+                    <div key={story} className="flex flex-col items-center flex-shrink-0">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-yellow-400 to-red-500 p-0.5 mb-1">
+                        <div className="bg-white rounded-full w-full h-full flex items-center justify-center">
+                          <span className="font-bold text-yellow-600">{['NG', 'MW', 'KT', 'FD', 'SP', 'KB', 'NM', 'TL'][story-1]}</span>
+                        </div>
+                      </div>
+                      <span className="text-xs truncate w-16 text-center">{['Nairobi', 'Mwangi', 'Kenya', 'Food', 'Sports', 'Kibaki', 'Nairobi', 'Travel'][story-1]}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Following posts */}
+              <div className="space-y-4">
+                {followingPosts.map(renderPost)}
+              </div>
+            </div>
+
+            <div className="col-span-4 space-y-6">
+              {/* Trending in Kenya */}
+              <div className="bg-white rounded-xl shadow-sm p-4">
+                <h3 className="font-bold text-sm mb-3">TRENDING IN KENYA</h3>
+                <div className="space-y-3">
+                  {trendingNow.map(trend => (
+                    <div key={trend.id} className="flex justify-between items-center hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
+                      <div>
+                        <p className="font-medium">{trend.title}</p>
+                        <p className="text-xs text-gray-500">{trend.posts} posts</p>
+                      </div>
+                      <BsThreeDotsVertical className="text-gray-400" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Kenya News */}
+              <div className="bg-white rounded-xl shadow-sm p-4">
+                <div className="flex justify-between items-center mb-3">
+                  <h2 className="font-bold text-lg flex items-center">
+                    <IoNewspaperOutline className="mr-2" /> Kenya News
+                  </h2>
+                  <button className="text-blue-600 text-sm hover:text-blue-800">See All</button>
+                </div>
+                
+                <div className="space-y-4">
+                  {newsStories.map(renderNewsCard)}
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+
+  const renderReelsTab = () => (
+    <div className={`${isMobile ? 'h-full' : 'min-h-screen'} bg-black text-white`}>
+      {isMobile ? (
+        // Mobile reels view
+        <div className="relative h-full">
+          {/* Reel video placeholder */}
+          <div className="absolute inset-0 bg-gray-900 flex items-center justify-center">
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full border-4 border-white flex items-center justify-center mb-4 mx-auto">
+                <FiPlay className="w-6 h-6 ml-1" />
+              </div>
+              <p>Tap to play reel</p>
+            </div>
+          </div>
+          
+          {/* Reel info overlay */}
+          <div className="absolute bottom-20 left-4 right-4">
+            <div className="mb-4">
+              <p className="font-medium">@{reels[0].user}</p>
+              <p className="text-sm my-2">{reels[0].caption}</p>
+              <div className="flex items-center">
+                <FiMusic className="w-4 h-4 mr-2" />
+                <p className="text-sm">{reels[0].song}</p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Right side actions */}
+          <div className="absolute right-4 bottom-20 flex flex-col items-center space-y-5">
+            <div className="flex flex-col items-center">
+              <button 
+                onClick={() => toggleLike(reels[0].id, 'reel')}
+                className="p-2"
+              >
+                <FiHeart className={`w-7 h-7 ${likedPosts.includes(reels[0].id) ? 'text-red-500 fill-red-500' : 'text-white'}`} />
+              </button>
+              <span className="text-xs">{reels[0].likes}</span>
+            </div>
+            
+            <div className="flex flex-col items-center">
+              <button className="p-2">
+                <FiMessageSquare className="w-7 h-7 text-white" />
+              </button>
+              <span className="text-xs">{reels[0].comments}</span>
+            </div>
+            
+            <div className="flex flex-col items-center">
+              <button className="p-2">
+                <FiShare2 className="w-7 h-7 text-white" />
+              </button>
+              <span className="text-xs">Share</span>
+            </div>
+            
+            <div className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center overflow-hidden">
+              <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        // Desktop reels view
+        <div className="p-6">
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="text-2xl font-bold">Reels</h1>
+            <div className="flex items-center space-x-4">
+              <button className="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium">
+                Upload Reel
+              </button>
+              <button className="p-2 rounded-full hover:bg-gray-800">
+                <FiSearch className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 gap-6">
+            {reels.map(reel => (
+              <div key={reel.id} className="bg-gray-900 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="relative aspect-[9/16]">
+                  <div className="absolute inset-0 bg-gray-800 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full border-4 border-white flex items-center justify-center">
+                      <FiPlay className="w-6 h-6 ml-1" />
+                    </div>
+                  </div>
+                  
+                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+                    <div className="flex items-center space-x-2 mb-2">
+                      <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                        <span className="text-xs font-bold text-blue-600">{reel.user.charAt(0)}</span>
+                      </div>
+                      <span className="font-medium">@{reel.user}</span>
+                      {reel.isFollowing && (
+                        <span className="text-xs bg-gray-700 px-2 py-0.5 rounded-full">Following</span>
+                      )}
+                    </div>
+                    <p className="text-sm mb-2">{reel.caption}</p>
+                    <div className="flex items-center text-xs text-gray-300">
+                      <FiMusic className="mr-2" />
+                      <span>{reel.song}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="absolute right-4 bottom-1/2 transform translate-y-1/2 flex flex-col items-center space-y-5">
+                    <div className="flex flex-col items-center">
+                      <button 
+                        onClick={() => toggleLike(reel.id, 'reel')}
+                        className="p-2"
+                      >
+                        <FiHeart className={`w-7 h-7 ${likedPosts.includes(reel.id) ? 'text-red-500 fill-red-500' : 'text-white'}`} />
+                      </button>
+                      <span className="text-xs">{reel.likes}</span>
+                    </div>
+                    
+                    <div className="flex flex-col items-center">
+                      <button className="p-2">
+                        <FiMessageSquare className="w-7 h-7 text-white" />
+                      </button>
+                      <span className="text-xs">{reel.comments}</span>
+                    </div>
+                    
+                    <button className="p-2">
+                      <FiShare2 className="w-7 h-7 text-white" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+
+  const renderVideosTab = () => (
+    <div className={isMobile ? "p-4" : "p-6"}>
+      {isMobile ? (
+        <>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-bold text-lg">Videos</h2>
+            <div className="flex space-x-2">
+              <button className="px-3 py-1 bg-blue-600 text-white rounded-full text-sm">
+                For You
+              </button>
+              <button className="px-3 py-1 bg-gray-100 rounded-full text-sm">
+                Following
+              </button>
+            </div>
+          </div>
+          
+          <div className="space-y-4">
+            {longVideos.map(renderVideoCard)}
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="text-2xl font-bold">Videos</h1>
+            <div className="flex items-center space-x-4">
+              <div className="relative">
+                <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <input 
+                  type="text" 
+                  placeholder="Search videos..." 
+                  className="bg-gray-100 rounded-lg py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white w-64"
+                />
+              </div>
+              <button className="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium">
+                Upload Video
+              </button>
+            </div>
+          </div>
+
+          <div className="flex space-x-4 mb-6">
+            <button className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium">
+              For You
+            </button>
+            <button className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm font-medium">
+              Following
+            </button>
+            <button className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm font-medium">
+              Trending
+            </button>
+            <button className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg text-sm font-medium">
+              Music
+            </button>
+          </div>
+
+          <div className="grid grid-cols-3 gap-6">
+            {longVideos.map(renderVideoCard)}
+          </div>
+        </>
+      )}
+    </div>
+  );
+
+  const renderPodcastsTab = () => (
+    <div className={isMobile ? "p-4" : "p-6"}>
+      {isMobile ? (
+        <>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-bold text-lg flex items-center">
+              <FiHeadphones className="mr-2" /> Podcasts
+            </h2>
+            <button className="text-blue-600 text-sm">See All</button>
+          </div>
+          
+          <div className="space-y-4">
+            {podcasts.map(renderPodcastCard)}
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="flex justify-between items-center mb-6">
+            <h1 className="text-2xl font-bold flex items-center">
+              <FiHeadphones className="mr-3" /> Podcasts
+            </h1>
+            <div className="flex items-center space-x-4">
+              <div className="relative">
+                <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <input 
+                  type="text" 
+                  placeholder="Search podcasts..." 
+                  className="bg-gray-100 rounded-lg py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white w-64"
+                />
+              </div>
+              <button className="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium">
+                Create Podcast
+              </button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-6 mb-6">
+            {podcasts.slice(0, 2).map(podcast => (
+              <div key={podcast.id} className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow flex">
+                <div className="w-32 h-32 bg-gray-200 rounded-lg flex-shrink-0 flex items-center justify-center text-gray-500 mr-4">
+                  {podcast.thumbnail.replace('.jpg', '')}
+                </div>
+                <div className="flex-1">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="font-bold text-xl mb-2">{podcast.title}</h3>
+                      <p className="text-gray-600 mb-3">{podcast.host}</p>
+                    </div>
+                    <button className="p-2 rounded-full hover:bg-gray-100">
+                      <FiBookmark className="w-5 h-5 text-gray-500" />
+                    </button>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-500 mb-4">
+                    <span>{podcast.duration}</span>
+                    <BsDot className="mx-2" />
+                    <span>{podcast.plays} plays</span>
+                    <BsDot className="mx-2" />
+                    <span className="text-blue-600">{podcast.category}</span>
+                  </div>
+                  <div className="flex items-center">
+                    <button className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center mr-4">
+                      <FiPlay className="w-6 h-6 text-white" />
+                    </button>
+                    <div className="flex-1 bg-gray-100 h-2 rounded-full overflow-hidden">
+                      <div className="bg-blue-600 h-full w-1/3"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h2 className="text-xl font-bold mb-4">More Podcasts</h2>
+          <div className="grid grid-cols-3 gap-6">
+            {podcasts.map(renderPodcastCard)}
+          </div>
+        </>
+      )}
+    </div>
+  );
+
+  const renderProfileTab = () => (
+    <div className={isMobile ? "p-4" : "p-6"}>
+      {isMobile ? (
+        <>
+          <div className="flex items-center space-x-4 mb-6">
+            <div className="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center">
+              <span className="text-2xl font-bold text-blue-600">YP</span>
+            </div>
+            <div className="flex-1">
+              <h2 className="font-bold text-xl">Your Profile</h2>
+              <p className="text-gray-600">@yourprofile</p>
+            </div>
+          </div>
+          
+          <div className="flex justify-around mb-6">
+            <div className="flex flex-col items-center">
+              <span className="font-bold">1,234</span>
+              <span className="text-sm text-gray-600">Posts</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="font-bold">5.6K</span>
+              <span className="text-sm text-gray-600">Followers</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="font-bold">342</span>
+              <span className="text-sm text-gray-600">Following</span>
+            </div>
+          </div>
+          
+          <div className="mb-6">
+            <h3 className="font-bold mb-2">Saved Items</h3>
+            <div className="grid grid-cols-3 gap-1">
+              {[1, 2, 3, 4, 5, 6].map(item => (
+                <div key={item} className="aspect-square bg-gray-200 flex items-center justify-center text-gray-500">
+                  {['News', 'Reel', 'Post', 'Video', 'News', 'Podcast'][item-1]}
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="space-y-3">
+            <button className="w-full text-left flex items-center p-3 bg-gray-100 rounded-lg">
+              <FiUser className="w-5 h-5 mr-3" />
+              <span>Edit Profile</span>
+            </button>
+            <button className="w-full text-left flex items-center p-3 bg-gray-100 rounded-lg">
+              <FiBookmark className="w-5 h-5 mr-3" />
+              <span>Saved Content</span>
+            </button>
+            <button className="w-full text-left flex items-center p-3 bg-gray-100 rounded-lg">
+              <FiBell className="w-5 h-5 mr-3" />
+              <span>Notifications</span>
+            </button>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="flex items-start justify-between mb-8">
+            <div className="flex items-center space-x-6">
+              <div className="w-32 h-32 rounded-full bg-blue-100 flex items-center justify-center">
+                <span className="text-4xl font-bold text-blue-600">YP</span>
+              </div>
+              <div>
+                <div className="flex items-center mb-2">
+                  <h1 className="text-2xl font-bold mr-3">Your Profile</h1>
+                  <button className="px-4 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium">
+                    Edit Profile
+                  </button>
+                </div>
+                <p className="text-gray-600 mb-4">@yourprofile</p>
+                <p className="mb-4">Digital creator sharing Kenyan stories, culture, and trends. 🇰🇪</p>
+                <div className="flex space-x-6">
+                  <div className="flex flex-col">
+                    <span className="font-bold">1,234</span>
+                    <span className="text-sm text-gray-600">Posts</span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="font-bold">5.6K</span>
+                    <span className="text-sm text-gray-600">Followers</span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="font-bold">342</span>
+                    <span className="text-sm text-gray-600">Following</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button className="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium">
+              Create Post
+            </button>
+          </div>
+
+          <div className="border-b border-gray-200 mb-6">
+            <div className="flex space-x-8">
+              <button className="px-4 py-3 border-b-2 border-black font-medium">
+                <BsGrid3X3 className="inline mr-2" />
+                Posts
+              </button>
+              <button className="px-4 py-3 text-gray-500 hover:text-black">
+                <RiVideoLine className="inline mr-2" />
+                Videos
+              </button>
+              <button className="px-4 py-3 text-gray-500 hover:text-black">
+                <FiHeadphones className="inline mr-2" />
+                Podcasts
+              </button>
+              <button className="px-4 py-3 text-gray-500 hover:text-black">
+                <BsBookmark className="inline mr-2" />
+                Saved
+              </button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 gap-6">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(post => (
+              <div key={post} className="aspect-square bg-gray-200 rounded-xl overflow-hidden hover:shadow-md transition-shadow flex items-center justify-center text-gray-500">
+                {['Post', 'Video', 'Reel', 'News', 'Podcast', 'Photo', 'Story', 'Event', 'Poll'][post-1]}
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+
+  if (isMobile) {
+    return (
+      <div className="relative max-w-md mx-auto h-[800px] bg-gray-50 overflow-hidden border border-gray-200 rounded-2xl shadow-xl flex flex-col">
+        {/* Header */}
+        <header className="bg-white border-b border-gray-200 p-4 flex justify-between items-center">
+          <h1 className="font-bold text-xl text-blue-600">BomaSocial</h1>
+          <div className="flex items-center space-x-3">
+            <button className="p-1">
+              <FiBell className="w-5 h-5" />
+            </button>
+            <button className="p-1">
+              <FiMessageSquare className="w-5 h-5" />
+            </button>
+          </div>
+        </header>
+
+        {/* Main Content */}
+        <main className="flex-1 overflow-y-auto pb-16">
+          {activeTab === 'home' && renderHomeTab()}
+          {activeTab === 'reels' && renderReelsTab()}
+          {activeTab === 'videos' && renderVideosTab()}
+          {activeTab === 'podcasts' && renderPodcastsTab()}
+          {activeTab === 'profile' && renderProfileTab()}
+        </main>
+
+        {/* Bottom Navigation */}
+        <nav className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around">
+          <button 
+            onClick={() => setActiveTab('home')} 
+            className={`p-3 flex flex-col items-center ${activeTab === 'home' ? 'text-blue-600' : 'text-gray-500'}`}
+          >
+            <FiHome className="w-6 h-6" />
+            <span className="text-xs mt-1">Home</span>
+          </button>
+          <button 
+            onClick={() => setActiveTab('reels')} 
+            className={`p-3 flex flex-col items-center ${activeTab === 'reels' ? 'text-blue-600' : 'text-gray-500'}`}
+          >
+            <FiCompass className="w-6 h-6" />
+            <span className="text-xs mt-1">Reels</span>
+          </button>
+          <button 
+            onClick={() => setShowCreatePost(true)}
+            className="p-3 flex flex-col items-center text-white bg-gradient-to-r from-blue-600 to-blue-500 rounded-full -mt-6 w-12 h-12 justify-center shadow-lg"
+          >
+            <FiPlusSquare className="w-6 h-6" />
+          </button>
+          <button 
+            onClick={() => setActiveTab('videos')} 
+            className={`p-3 flex flex-col items-center ${activeTab === 'videos' ? 'text-blue-600' : 'text-gray-500'}`}
+          >
+            <FiPlay className="w-6 h-6" />
+            <span className="text-xs mt-1">Videos</span>
+          </button>
+          <button 
+            onClick={() => setActiveTab('profile')} 
+            className={`p-3 flex flex-col items-center ${activeTab === 'profile' ? 'text-blue-600' : 'text-gray-500'}`}
+          >
+            <FiUser className="w-6 h-6" />
+            <span className="text-xs mt-1">Profile</span>
+          </button>
+        </nav>
+
+        {/* Create Post Modal */}
+        {showCreatePost && (
+          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-10">
+            <div className="bg-white rounded-xl w-full max-w-sm p-4">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="font-bold text-lg">Create Post</h2>
+                <button onClick={() => setShowCreatePost(false)}>
+                  <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              
+              <div className="flex items-center space-x-2 mb-3">
+                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                  <span className="font-medium text-blue-600">YP</span>
+                </div>
+                <span className="font-medium">Your Profile</span>
+              </div>
+              
+              <textarea 
+                className="w-full border border-gray-300 rounded-lg p-3 mb-3" 
+                placeholder="What's happening in Kenya today?"
+                rows={4}
+              />
+              
+              <div className="flex justify-between mb-4">
+                <button className="p-2 rounded-lg bg-gray-100">
+                  <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </button>
+                <button className="p-2 rounded-lg bg-gray-100">
+                  <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                  </svg>
+                </button>
+                <button className="p-2 rounded-lg bg-gray-100 flex items-center">
+                  <FiMapPin className="w-5 h-5 text-gray-500 mr-1" />
+                  <span className="text-sm">Location</span>
+                </button>
+              </div>
+              
+              <button className="w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white py-2 rounded-lg font-medium">
+                Post
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Desktop layout
+  return (
+    <div className="min-h-screen bg-gray-50 flex">
+      {renderDesktopSidebar()}
+      
+      <div className="flex-1 flex flex-col">
+        {renderDesktopHeader()}
+        
+        <main className="flex-1 overflow-y-auto">
+          {activeTab === 'home' && renderHomeTab()}
+          {activeTab === 'reels' && renderReelsTab()}
+          {activeTab === 'videos' && renderVideosTab()}
+          {activeTab === 'podcasts' && renderPodcastsTab()}
+          {activeTab === 'profile' && renderProfileTab()}
+        </main>
+      </div>
+
+      {/* Create Post Modal */}
+      {showCreatePost && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl w-full max-w-2xl p-6">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="font-bold text-xl">Create Post</h2>
+              <button 
+                onClick={() => setShowCreatePost(false)}
+                className="p-1 rounded-full hover:bg-gray-100"
+              >
+                <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                <span className="font-medium text-blue-600 text-lg">YP</span>
+              </div>
+              <div>
+                <p className="font-medium">Your Profile</p>
+                <div className="flex space-x-2 mt-1">
+                  <button className="px-3 py-0.5 bg-gray-100 hover:bg-gray-200 rounded-full text-xs font-medium">
+                    Public
+                  </button>
+                  <button className="px-3 py-0.5 bg-gray-100 hover:bg-gray-200 rounded-full text-xs font-medium flex items-center">
+                    <FiMapPin className="w-3 h-3 mr-1" />
+                    <span>Add Location</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <textarea 
+              className="w-full border-0 text-xl p-3 mb-4 focus:outline-none resize-none" 
+              placeholder="What's happening in Kenya today?"
+              rows={5}
+              autoFocus
+            />
+            
+            <div className="border border-gray-200 rounded-lg p-4 mb-4">
+              <div className="flex justify-between items-center mb-3">
+                <h3 className="font-medium">Add to your post</h3>
+                <button className="text-blue-600 text-sm font-medium">Add Poll</button>
+              </div>
+              <div className="flex space-x-4">
+                <button className="flex items-center text-gray-600 hover:bg-gray-100 px-3 py-2 rounded-lg">
+                  <svg className="w-5 h-5 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span>Photo/Video</span>
+                </button>
+                <button className="flex items-center text-gray-600 hover:bg-gray-100 px-3 py-2 rounded-lg">
+                  <RiVideoLine className="w-5 h-5 mr-2 text-gray-500" />
+                  <span>Live Video</span>
+                </button>
+                <button className="flex items-center text-gray-600 hover:bg-gray-100 px-3 py-2 rounded-lg">
+                  <FiHeadphones className="w-5 h-5 mr-2 text-gray-500" />
+                  <span>Podcast</span>
+                </button>
+              </div>
+            </div>
+            
+            <button className="w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white py-3 rounded-lg font-medium text-lg hover:from-blue-700 hover:to-blue-600 transition-colors">
+              Post
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default KenyanSocialApp;

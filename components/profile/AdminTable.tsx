@@ -28,34 +28,34 @@ export const AdminTable = ({
       <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
       <button
         onClick={onAdd}
-        className="flex items-center gap-2 px-4 py-2 bg-[#f4b500] hover:bg-[#d4a017] text-black font-bold rounded-full transition-colors"
+        className="flex items-center gap-2 px-4 py-2 bg-[#82cee4] hover:bg-[#62aee4] text-black font-bold rounded-full transition-colors"
       >
         <Plus size={16} /> Add {title.split(" ")[0]}
       </button>
     </div>
 
     <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+      <table className="min-w-full divide-y divide-[#82cee4]">
+        <thead className="bg-[#081e4e]">
           <tr>
             {columns.map((column) => (
               <th
                 key={column.key}
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
               >
                 {column.label}
               </th>
             ))}
             <th
               scope="col"
-              className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+              className="px-6 py-3 text-right text-xs font-medium text-white uppercase tracking-wider"
             >
               Actions
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-white divide-y divide-[#82cee4]">
           {data.map((item) => (
             <tr key={item.id}>
               {columns.map((column) => (
@@ -74,7 +74,7 @@ export const AdminTable = ({
                 <div className="flex justify-end gap-2">
                   <button
                     onClick={() => onEdit(item.id)}
-                    className="text-[#f4b500] hover:text-[#d4a017] p-1 rounded-full hover:bg-[#f4b500]/10"
+                    className="text-[#82cee4] hover:text-[#62aee4] p-1 rounded-full hover:bg-[#82cee4]/10"
                   >
                     <Edit size={16} />
                   </button>

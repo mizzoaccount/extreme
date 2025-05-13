@@ -315,7 +315,7 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
           </label>
           <select
             name={`attr-${fullPath}`}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f4b500] focus:border-transparent"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#62aee4] focus:border-transparent"
             onChange={handleInputChange}
             value={formData.attributes[fullPath] || ""}
             required
@@ -366,7 +366,7 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
                   <input
                     type="text"
                     name="name"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f4b500] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#62aee4] focus:border-transparent"
                     value={formData.name}
                     onChange={handleInputChange}
                     required
@@ -378,7 +378,7 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
                   <input
                     type="text"
                     name="designer"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f4b500] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#62aee4] focus:border-transparent"
                     value={formData.designer}
                     onChange={handleInputChange}
                     required
@@ -389,7 +389,7 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
                   <label className="block text-sm font-medium text-gray-700 mb-1">Main Category*</label>
                   <select
                     name="mainCategory"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f4b500] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#62aee4] focus:border-transparent"
                     onChange={handleInputChange}
                     value={formData.mainCategory}
                     required
@@ -407,7 +407,7 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
                   <label className="block text-sm font-medium text-gray-700 mb-1">Sub Category*</label>
                   <select
                     name="subCategory"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f4b500] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#62aee4] focus:border-transparent"
                     onChange={handleInputChange}
                     value={formData.subCategory}
                     required
@@ -425,7 +425,7 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
                   <label className="block text-sm font-medium text-gray-700 mb-1">Brand*</label>
                   <select
                     name="brand"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f4b500] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#62aee4] focus:border-transparent"
                     onChange={handleInputChange}
                     value={formData.brand}
                     required
@@ -445,7 +445,7 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
                     type="number"
                     name="stock"
                     min="0"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f4b500] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#62aee4] focus:border-transparent"
                     value={formData.stock}
                     onChange={handleInputChange}
                     required
@@ -459,7 +459,7 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
                     name="price"
                     min="0"
                     step="0.01"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#f4b500] focus:border-transparent"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#62aee4] focus:border-transparent"
                     value={formData.price}
                     onChange={handleInputChange}
                     required
@@ -482,7 +482,7 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
             {/* Image Upload Section */}
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-gray-900 border-b pb-2">Product Images</h3>
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-[#f4b500] transition-colors">
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-[#62aee4] transition-colors">
                 <input
                   type="file"
                   multiple
@@ -496,7 +496,7 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
                   htmlFor="imageUpload" 
                   className={`cursor-pointer flex flex-col items-center ${isSubmitting ? 'opacity-50' : ''}`}
                 >
-                  <div className="mb-2 text-[#f4b500]">
+                  <div className="mb-2 text-[#62aee4]">
                     <Plus size={24} />
                   </div>
                   <p className="text-sm text-gray-600">Drag and drop images here</p>
@@ -539,7 +539,7 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
               </button>
               <button
                 type="submit"
-                className="px-6 py-2 bg-[#f4b500] hover:bg-[#d4a017] text-black font-bold rounded-lg transition-colors disabled:opacity-50"
+                className="px-6 py-2 bg-[#62aee4] hover:bg-[#4287b8] text-black font-bold rounded-lg transition-colors disabled:opacity-50"
                 disabled={isSubmitting || !formData.brand}
               >
                 {isSubmitting ? "Adding..." : "Add Product"}

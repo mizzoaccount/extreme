@@ -33,7 +33,7 @@ export const ProfileTabs = ({ activeTab, setActiveTab, isAdmin }: ProfileTabsPro
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.2 }}
-      className="mb-8 border-b border-gray-200"
+      className="mb-8 border-b border-[#82cee4]"
     >
       <nav className="flex space-x-8 overflow-x-auto">
         {tabs.map((tab) => (
@@ -42,7 +42,7 @@ export const ProfileTabs = ({ activeTab, setActiveTab, isAdmin }: ProfileTabsPro
             onClick={() => setActiveTab(tab.id)}
             className={`py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap ${
               activeTab === tab.id
-                ? "border-[#f4b500] text-[#f4b500]"
+                ? "border-[#82cee4] text-[#82cee4]"
                 : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
             }`}
           >
