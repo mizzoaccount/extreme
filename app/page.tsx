@@ -10,6 +10,12 @@ import SocialMediaIntegration from '@/components/SicialMediaIntegration';
 import NewsletterSignup from '@/components/NewsLetterSignup';
 import FashionBlogSection from '@/components/FashionBlogSection';
 import LuxuryFooter from '@/components/LuxuryFooter';
+import AboutSection from '@/components/About';
+import ContactForm from '@/components/ContactForm';
+import ClientReviews from '@/components/ClientReviews';
+import SafetyGuidesSection from '@/components/SafetyGuideSection';
+import IndustriesServed from '@/components/IndustriesServed';
+import CertificationsSection from '@/components/CertificationsSection';
 
 export default function Home() {
   return (
@@ -18,14 +24,20 @@ export default function Home() {
       <main>
         <Navbar />
         <Hero />
+        <AboutSection />
         <FeaturedCollections />
-        <SpecialOffers />
+        {/*<SpecialOffers />*
         <DesignerShowcase />
         <Testimonials />
         <CelebritySpotlight />
         <SocialMediaIntegration />
         <NewsletterSignup />
-        <FashionBlogSection />
+        <FashionBlogSection />*/}
+        <CertificationsSection />
+        <IndustriesServed />
+        <SafetyGuidesSection />
+        <ClientReviews />
+        <ContactForm />
         <LuxuryFooter />
       
       </main>

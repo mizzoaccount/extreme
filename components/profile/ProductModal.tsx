@@ -40,6 +40,79 @@ const productHierarchy: Record<string, {
     attributes: Record<string, Attribute>;
   }>;
 }> = {
+  "Lab & Chemicals": {
+    subCategories: {
+      "Basic Chemicals": {
+        brands: ["Sigma-Aldrich", "Fisher Scientific", "Merck", "Carolina Biological"],
+        attributes: {
+          ChemicalType: {
+            name: "Chemical Type",
+            type: "select",
+            options: ["Acid", "Base", "Salt", "Solvent", "Indicator", "Metal"],
+          },
+          Grade: {
+            name: "Grade",
+            type: "select",
+            options: ["Analytical", "Laboratory", "Reagent", "Technical"],
+          },
+          State: {
+            name: "State",
+            type: "select",
+            options: ["Solid", "Liquid", "Powder", "Granule"],
+          },
+          Packaging: {
+            name: "Packaging",
+            type: "select",
+            options: ["100ml", "250ml", "500ml", "1L", "5L"],
+          },
+        },
+      },
+      "Lab Equipment": {
+        brands: ["Eisco", "United Scientific", "LabTech", "Thermo Fisher"],
+        attributes: {
+          EquipmentType: {
+            name: "Equipment Type",
+            type: "select",
+            options: [
+              "Beaker",
+              "Conical Flask",
+              "Test Tube",
+              "Measuring Cylinder",
+              "Bunsen Burner",
+              "Balance",
+              "Stirring Rod",
+              "Dropper",
+              "Rack"
+            ],
+          },
+          Material: {
+            name: "Material",
+            type: "select",
+            options: ["Glass", "Plastic", "Metal", "Ceramic"],
+          },
+          Capacity: {
+            name: "Capacity",
+            type: "select",
+            options: ["10ml", "50ml", "100ml", "250ml", "500ml", "1L"],
+          },
+          SafetyCompliance: {
+            name: "Safety Compliance",
+            type: "select",
+            options: ["ISO Certified", "CE Marked", "ASTM", "None"],
+          },
+        },
+      },
+    },
+  },
+};
+
+
+/*const productHierarchy: Record<string, {
+  subCategories: Record<string, {
+    brands: string[];
+    attributes: Record<string, Attribute>;
+  }>;
+}> = {
   Clothing: {
     subCategories: {
       "Men's Fashion": {
@@ -131,7 +204,7 @@ const productHierarchy: Record<string, {
       },
     },
   },
-};
+};*/
 
 export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProps) => {
   const [formData, setFormData] = useState<ProductFormData>({
@@ -374,7 +447,7 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Designer*</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Description*</label>
                   <input
                     type="text"
                     name="designer"
