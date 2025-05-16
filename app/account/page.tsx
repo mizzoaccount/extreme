@@ -1,6 +1,6 @@
 /*"use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { User, Edit } from "lucide-react";
 import NavbarTwo from "@/components/HeaderTwo";
@@ -11,9 +11,10 @@ import { ProfileInfoSection } from "@/components/profile/ProfileInfoSection";
 import { ProfileEditForm } from "@/components/profile/ProfileEditForm";
 import { OrderList } from "@/components/profile/OrderList";
 import { AdminTable } from "@/components/profile/AdminTable";
-import { currentUser, orders, users } from "@/data/profileData";
 import { ProductModal } from "@/components/profile/ProductModal";
 import useProducts from "@/utils/useProducts";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 interface Product {
   _id: string;
@@ -31,26 +32,125 @@ interface Product {
   createdAt: string;
 }
 
+interface Order {
+  id: string;
+  date: string;
+  status: string;
+  items: Array<{
+    id: number;
+    name: string;
+    designer: string;
+    price: number;
+    image: string;
+    quantity: number;
+  }>;
+  total: number;
+  trackingNumber: string;
+}
+
+interface AdminUser {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: 'customer' | 'admin';
+  createdAt: string;
+  orderCount?: number;
+}
+
 const ProfilePage = () => {
+  const { user, isLoading } = useAuth();
   const [activeTab, setActiveTab] = useState("profile");
   const [isEditing, setIsEditing] = useState(false);
   const [isProductModalOpen, setIsProductModalOpen] = useState(false);
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [adminUsers, setAdminUsers] = useState<AdminUser[]>([]);
+  const [isLoadingOrders, setIsLoadingOrders] = useState(false);
+  const [isLoadingUsers, setIsLoadingUsers] = useState(false);
+  const router = useRouter();
+  
+  // Initialize form data with user info or empty strings
   const [formData, setFormData] = useState({
-    name: currentUser.name,
-    email: currentUser.email,
-    shippingStreet: currentUser.shippingAddress.street,
-    shippingCity: currentUser.shippingAddress.city,
-    shippingState: currentUser.shippingAddress.state,
-    shippingZip: currentUser.shippingAddress.zip,
-    shippingCountry: currentUser.shippingAddress.country,
-    billingStreet: currentUser.billingAddress.street,
-    billingCity: currentUser.billingAddress.city,
-    billingState: currentUser.billingAddress.state,
-    billingZip: currentUser.billingAddress.zip,
-    billingCountry: currentUser.billingAddress.country,
+    firstName: user?.firstName || "",
+    lastName: user?.lastName || "",
+    email: user?.email || "",
+    shippingStreet: "",
+    shippingCity: "",
+    shippingState: "",
+    shippingZip: "",
+    shippingCountry: "",
+    billingStreet: "",
+    billingCity: "",
+    billingState: "",
+    billingZip: "",
+    billingCountry: "",
   });
 
   const { products, loading, error } = useProducts();
+
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        shippingStreet: "",
+        shippingCity: "",
+        shippingState: "",
+        shippingZip: "",
+        shippingCountry: "",
+        billingStreet: "",
+        billingCity: "",
+        billingState: "",
+        billingZip: "",
+        billingCountry: "",
+      });
+
+      // Load orders when user is available and orders tab is active
+      if (activeTab === "orders" && user) {
+        loadOrders();
+      }
+
+      // Load users when admin tab is active and user is admin
+      if (activeTab === "users" && user?.role === "admin") {
+        loadUsers();
+      }
+    }
+  }, [user, activeTab]);
+
+  const loadOrders = async () => {
+    setIsLoadingOrders(true);
+    try {
+      // Replace with actual API call to fetch user orders
+      // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders/user/${user._id}`);
+      // const data = await response.json();
+      // setOrders(data);
+      
+      // Temporary mock data until API is implemented
+      setOrders([]);
+    } catch (error) {
+      console.error("Error loading orders:", error);
+    } finally {
+      setIsLoadingOrders(false);
+    }
+  };
+
+  const loadUsers = async () => {
+    setIsLoadingUsers(true);
+    try {
+      // Replace with actual API call to fetch all users (admin only)
+      // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users`);
+      // const data = await response.json();
+      // setAdminUsers(data);
+      
+      // Temporary mock data until API is implemented
+      setAdminUsers([]);
+    } catch (error) {
+      console.error("Error loading users:", error);
+    } finally {
+      setIsLoadingUsers(false);
+    }
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -60,9 +160,25 @@ const ProfilePage = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsEditing(false);
+    try {
+      // Replace with actual API call to update user profile
+      // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/${user._id}`, {
+      //   method: 'PUT',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Authorization': `Bearer ${token}`
+      //   },
+      //   body: JSON.stringify(formData)
+      // });
+      // const updatedUser = await response.json();
+      // setUser(updatedUser);
+      
+      setIsEditing(false);
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    }
   };
 
   const handleEditProduct = (productId: string) => {
@@ -72,7 +188,7 @@ const ProfilePage = () => {
 
   const handleDeleteProduct = async (productId: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/products/${productId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${productId}`, {
         method: 'DELETE',
       });
       
@@ -88,18 +204,17 @@ const ProfilePage = () => {
     }
   };
 
-  const handleEditUser = (userId: number) => {
+  const handleEditUser = (userId: string) => {
     console.log("Editing user:", userId);
   };
 
-  const handleDeleteUser = (userId: number) => {
+  const handleDeleteUser = (userId: string) => {
     console.log("Deleting user:", userId);
   };
 
-  const handleStartShopping = () => {
-    console.log("Start shopping clicked");
+   const handleStartShopping = () => {
+    router.push("/collections");
   };
-
   const handleEditAvatar = () => {
     console.log("Edit avatar clicked");
   };
@@ -121,12 +236,30 @@ const ProfilePage = () => {
     id: product._id,
     name: product.name,
     designer: product.designer,
-   // category: `${product.category.main} / ${product.category.sub} / ${product.category.brand}`,
     category: `${product.category.main}`,
     price: product.price,
     stock: product.stock,
     rawData: product,
   }));
+
+  // Format admin users for the AdminTable
+  const formattedUsers = adminUsers.map((user) => ({
+    id: user._id,
+    name: `${user.firstName} ${user.lastName}`,
+    email: user.email,
+    role: user.role,
+    joined: new Date(user.createdAt).toLocaleDateString(),
+    orders: user.orderCount || 0,
+    rawData: user,
+  }));
+
+  if (isLoading || !user) {
+    return (
+      <div className="bg-white min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#82cee4]"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white min-h-screen">
@@ -134,25 +267,24 @@ const ProfilePage = () => {
 
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <ProfileHeader
-          name={currentUser.name}
-          email={currentUser.email}
-          avatar={currentUser.avatar}
-          joinedDate={currentUser.joinedDate}
-          role={currentUser.role}
-          onEditAvatar={handleEditAvatar}
-        />
+          firstName={`${user.firstName} ${user.lastName}`}
+          email={user.email}
+          avatar={`https://ui-avatars.com/api/?name=${user.firstName}+${user.lastName}&background=82cee4&color=fff`}
+          joinedDate={new Date(user.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+          role={user.role}
+          onEditAvatar={handleEditAvatar} lastName={""}        />
 
         <ProfileTabs
           activeTab={activeTab}
           setActiveTab={setActiveTab}
-          isAdmin={currentUser.role === "admin"}
+          isAdmin={user.role === "admin"}
         />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-white rounded-xl border border-gray-200 shadow-sm p-6"
+          className="bg-white rounded-xl border border-[#82cee4] shadow-sm p-6"
         >
           {activeTab === "profile" && (
             <div>
@@ -161,7 +293,7 @@ const ProfilePage = () => {
                 {!isEditing ? (
                   <button
                     onClick={() => setIsEditing(true)}
-                    className="flex items-center gap-2 px-4 py-2 bg-[#f4b500] hover:bg-[#d4a017] text-black font-bold rounded-full transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 bg-[#82cee4] hover:bg-[#62aee4] text-black font-bold rounded-full transition-colors"
                   >
                     <Edit size={16} /> Edit Profile
                   </button>
@@ -175,7 +307,7 @@ const ProfilePage = () => {
                     </button>
                     <button
                       onClick={handleSubmit}
-                      className="px-4 py-2 bg-[#f4b500] hover:bg-[#d4a017] text-black font-bold rounded-full transition-colors"
+                      className="px-4 py-2 bg-[#82cee4] hover:bg-[#62aee4] text-black font-bold rounded-full transition-colors"
                     >
                       Save Changes
                     </button>
@@ -185,10 +317,22 @@ const ProfilePage = () => {
 
               {!isEditing ? (
                 <ProfileInfoSection
-                  name={currentUser.name}
-                  email={currentUser.email}
-                  shippingAddress={currentUser.shippingAddress}
-                  billingAddress={currentUser.billingAddress}
+                  firstName={`${user.firstName} ${user.lastName}`}
+                  email={user.email}
+                  shippingAddress={{
+                    street: formData.shippingStreet,
+                    city: formData.shippingCity,
+                    state: formData.shippingState,
+                    zip: formData.shippingZip,
+                    country: formData.shippingCountry
+                  }}
+                  billingAddress={{
+                    street: formData.billingStreet,
+                    city: formData.billingCity,
+                    state: formData.billingState,
+                    zip: formData.billingZip,
+                    country: formData.billingCountry
+                  }}
                 />
               ) : (
                 <ProfileEditForm
@@ -204,11 +348,27 @@ const ProfilePage = () => {
           {activeTab === "orders" && (
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Your Orders</h2>
-              <OrderList orders={orders} onStartShopping={handleStartShopping} />
+              {isLoadingOrders ? (
+                <div className="flex justify-center items-center py-10">
+                  <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#82cee4]"></div>
+                </div>
+              ) : orders.length > 0 ? (
+                <OrderList orders={orders} onStartShopping={handleStartShopping} />
+              ) : (
+                <div className="text-center py-10">
+                  <p className="text-gray-500">You haven't placed any orders yet.</p>
+                  <button
+                    onClick={handleStartShopping}
+                    className="mt-4 px-4 py-2 bg-[#82cee4] hover:bg-[#62aee4] text-black font-bold rounded-full transition-colors"
+                  >
+                    Start Shopping
+                  </button>
+                </div>
+              )}
             </div>
           )}
 
-          {activeTab === "users" && currentUser.role === "admin" && (
+          {activeTab === "users" && user.role === "admin" && (
             <AdminTable
               title="User Management"
               columns={[
@@ -234,7 +394,7 @@ const ProfilePage = () => {
                     <span
                       className={`px-2 py-1 text-xs rounded-full ${
                         role === "admin"
-                          ? "bg-[#f4b500] text-black"
+                          ? "bg-[#82cee4] text-black"
                           : "bg-gray-200 text-gray-800"
                       }`}
                     >
@@ -245,14 +405,15 @@ const ProfilePage = () => {
                 { key: "joined", label: "Joined" },
                 { key: "orders", label: "Orders" },
               ]}
-              data={users}
+              data={formattedUsers}
+              loading={isLoadingUsers}
               onAdd={handleAddUser}
               onEdit={handleEditUser}
               onDelete={handleDeleteUser}
             />
           )}
 
-          {activeTab === "products" && currentUser.role === "admin" && (
+          {activeTab === "products" && user.role === "admin" && (
             <AdminTable
               title="Product Management"
               columns={[
@@ -300,7 +461,7 @@ export default ProfilePage;*/
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { User, Edit } from "lucide-react";
 import NavbarTwo from "@/components/HeaderTwo";
@@ -311,9 +472,10 @@ import { ProfileInfoSection } from "@/components/profile/ProfileInfoSection";
 import { ProfileEditForm } from "@/components/profile/ProfileEditForm";
 import { OrderList } from "@/components/profile/OrderList";
 import { AdminTable } from "@/components/profile/AdminTable";
-import { currentUser, orders, users } from "@/data/profileData";
 import { ProductModal } from "@/components/profile/ProductModal";
 import useProducts from "@/utils/useProducts";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 interface Product {
   _id: string;
@@ -331,26 +493,208 @@ interface Product {
   createdAt: string;
 }
 
+interface Order {
+  id: string;
+  date: string;
+  status: string;
+  items: Array<{
+    id: number;
+    name: string;
+    designer: string;
+    price: number;
+    image: string;
+    quantity: number;
+  }>;
+  total: number;
+  trackingNumber: string;
+}
+
+interface AdminUser {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: 'customer' | 'admin';
+  createdAt: string;
+  orderCount?: number;
+}
+
+interface ApiResponse {
+  success: boolean;
+  count: number;
+  total: number;
+  pages: number;
+  currentPage: number;
+  data: AdminUser[];
+}
+
 const ProfilePage = () => {
+  const { user, isLoading, token , logout, refreshUser} = useAuth();
   const [activeTab, setActiveTab] = useState("profile");
   const [isEditing, setIsEditing] = useState(false);
   const [isProductModalOpen, setIsProductModalOpen] = useState(false);
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [adminUsers, setAdminUsers] = useState<AdminUser[]>([]);
+  const [isLoadingOrders, setIsLoadingOrders] = useState(false);
+  const [isLoadingUsers, setIsLoadingUsers] = useState(false);
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: 10,
+    total: 0,
+    pages: 1
+  });
+  const router = useRouter();
+  
+  // Initialize form data with user info or empty strings
   const [formData, setFormData] = useState({
-    name: currentUser.name,
-    email: currentUser.email,
-    shippingStreet: currentUser.shippingAddress.street,
-    shippingCity: currentUser.shippingAddress.city,
-    shippingState: currentUser.shippingAddress.state,
-    shippingZip: currentUser.shippingAddress.zip,
-    shippingCountry: currentUser.shippingAddress.country,
-    billingStreet: currentUser.billingAddress.street,
-    billingCity: currentUser.billingAddress.city,
-    billingState: currentUser.billingAddress.state,
-    billingZip: currentUser.billingAddress.zip,
-    billingCountry: currentUser.billingAddress.country,
+    firstName: user?.firstName || "",
+    lastName: user?.lastName || "",
+    email: user?.email || "",
+    shippingStreet: "",
+    shippingCity: "",
+    shippingState: "",
+    shippingZip: "",
+    shippingCountry: "",
+    billingStreet: "",
+    billingCity: "",
+    billingState: "",
+    billingZip: "",
+    billingCountry: "",
   });
 
   const { products, loading, error } = useProducts();
+
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        shippingStreet: "",
+        shippingCity: "",
+        shippingState: "",
+        shippingZip: "",
+        shippingCountry: "",
+        billingStreet: "",
+        billingCity: "",
+        billingState: "",
+        billingZip: "",
+        billingCountry: "",
+      });
+
+      // Load orders when user is available and orders tab is active
+      if (activeTab === "orders" && user) {
+        loadOrders();
+      }
+
+      // Load users when admin tab is active and user is admin
+      if (activeTab === "users" && user?.role === "admin") {
+        loadUsers();
+      }
+    }
+  }, [user, activeTab]);
+
+  const loadOrders = async () => {
+    setIsLoadingOrders(true);
+    try {
+      // Replace with actual API call to fetch user orders
+      // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders/user/${user._id}`);
+      // const data = await response.json();
+      // setOrders(data);
+      
+      // Temporary mock data until API is implemented
+      setOrders([]);
+    } catch (error) {
+      console.error("Error loading orders:", error);
+    } finally {
+      setIsLoadingOrders(false);
+    }
+  };
+
+ const loadUsers = async (page = 1, limit = 10, search = '') => {
+  setIsLoadingUsers(true);
+  console.log('🔄 Starting loadUsers...');
+  console.log('👉 Page:', page, '| Limit:', limit, '| Search:', search);
+  console.log('🔑 Token:', token);
+
+  try {
+    // First check if we have a token
+    if (!token) {
+      console.warn('⛔ No authentication token available. Aborting.');
+      throw new Error('No authentication token available');
+    }
+
+    let url = `${process.env.NEXT_PUBLIC_API_URL}/api/users?page=${page}&limit=${limit}`;
+    if (search) {
+      url += `&search=${search}`;
+    }
+
+    console.log('🌐 Fetching users from:', url);
+
+    const response = await fetch(url, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    console.log('📡 Response status:', response.status);
+
+    if (!response.ok) {
+      if (response.status === 401) {
+        console.warn('🔁 Token might be expired. Attempting to refresh user...');
+        await refreshUser(); // refresh token or re-authenticate
+        console.log('🔄 Retrying loadUsers after refresh...');
+        return loadUsers(page, limit, search); // retry once
+      }
+      throw new Error(`Failed to fetch users. Status: ${response.status}`);
+    }
+
+    const data: ApiResponse = await response.json();
+    console.log('✅ Users data received:', data);
+
+    if (data.success) {
+      setAdminUsers(data.data);
+      setPagination({
+        page: data.currentPage,
+        limit,
+        total: data.total,
+        pages: data.pages
+      });
+    } else {
+      console.warn('⚠️ API responded with success: false');
+    }
+
+  } catch (error) {
+    console.error("❌ Error loading users:", error);
+
+    if (
+      typeof error === "object" &&
+      error !== null &&
+      "message" in error &&
+      typeof (error as { message: unknown }).message === "string" &&
+      ((error as { message: string }).message.includes('401') ||
+        (error as { message: string }).message.includes('Unauthorized'))
+    ) {
+      console.log('🚪 Logging out due to auth error...');
+      logout();
+      router.push('/login');
+    }
+
+  } finally {
+    setIsLoadingUsers(false);
+    console.log('✅ loadUsers complete');
+  }
+};
+
+
+  const handlePageChange = (newPage: number) => {
+    loadUsers(newPage, pagination.limit);
+  };
+
+  const handleSearch = (searchTerm: string) => {
+    loadUsers(1, pagination.limit, searchTerm);
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -360,9 +704,25 @@ const ProfilePage = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsEditing(false);
+    try {
+      // Replace with actual API call to update user profile
+      // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/${user._id}`, {
+      //   method: 'PUT',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Authorization': `Bearer ${token}`
+      //   },
+      //   body: JSON.stringify(formData)
+      // });
+      // const updatedUser = await response.json();
+      // setUser(updatedUser);
+      
+      setIsEditing(false);
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    }
   };
 
   const handleEditProduct = (productId: string) => {
@@ -372,7 +732,7 @@ const ProfilePage = () => {
 
   const handleDeleteProduct = async (productId: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/products/${productId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${productId}`, {
         method: 'DELETE',
       });
       
@@ -388,16 +748,32 @@ const ProfilePage = () => {
     }
   };
 
-  const handleEditUser = (userId: number) => {
+  const handleEditUser = (userId: string) => {
     console.log("Editing user:", userId);
   };
 
-  const handleDeleteUser = (userId: number) => {
-    console.log("Deleting user:", userId);
+  const handleDeleteUser = async (userId: string) => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/${userId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete user');
+      }
+
+      // Refresh user list after deletion
+      loadUsers(pagination.page, pagination.limit);
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
   };
 
   const handleStartShopping = () => {
-    console.log("Start shopping clicked");
+    router.push("/collections");
   };
 
   const handleEditAvatar = () => {
@@ -421,12 +797,30 @@ const ProfilePage = () => {
     id: product._id,
     name: product.name,
     designer: product.designer,
-    //category: `${product.category.main} / ${product.category.sub} / ${product.category.brand}`,
-   category: `${product.category.main}`,
+    category: `${product.category.main}`,
     price: product.price,
     stock: product.stock,
     rawData: product,
   }));
+
+  // Format admin users for the AdminTable
+  const formattedUsers = adminUsers.map((user) => ({
+    id: user._id,
+    name: `${user.firstName} ${user.lastName}`,
+    email: user.email,
+    role: user.role,
+    joined: new Date(user.createdAt).toLocaleDateString(),
+    orders: user.orderCount || 0,
+    rawData: user,
+  }));
+
+  if (isLoading || !user) {
+    return (
+      <div className="bg-white min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#82cee4]"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white min-h-screen">
@@ -434,18 +828,19 @@ const ProfilePage = () => {
 
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <ProfileHeader
-          name={currentUser.name}
-          email={currentUser.email}
-          avatar={currentUser.avatar}
-          joinedDate={currentUser.joinedDate}
-          role={currentUser.role}
+          firstName={user.firstName}
+          lastName={user.lastName}
+          email={user.email}
+          avatar={`https://ui-avatars.com/api/?name=${user.firstName}+${user.lastName}&background=82cee4&color=fff`}
+          joinedDate={new Date(user.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+          role={user.role}
           onEditAvatar={handleEditAvatar}
         />
 
         <ProfileTabs
           activeTab={activeTab}
           setActiveTab={setActiveTab}
-          isAdmin={currentUser.role === "admin"}
+          isAdmin={user.role === "admin"}
         />
 
         <motion.div
@@ -485,10 +880,22 @@ const ProfilePage = () => {
 
               {!isEditing ? (
                 <ProfileInfoSection
-                  name={currentUser.name}
-                  email={currentUser.email}
-                  shippingAddress={currentUser.shippingAddress}
-                  billingAddress={currentUser.billingAddress}
+                  firstName={`${user.firstName} ${user.lastName}`}
+                  email={user.email}
+                  shippingAddress={{
+                    street: formData.shippingStreet,
+                    city: formData.shippingCity,
+                    state: formData.shippingState,
+                    zip: formData.shippingZip,
+                    country: formData.shippingCountry
+                  }}
+                  billingAddress={{
+                    street: formData.billingStreet,
+                    city: formData.billingCity,
+                    state: formData.billingState,
+                    zip: formData.billingZip,
+                    country: formData.billingCountry
+                  }}
                 />
               ) : (
                 <ProfileEditForm
@@ -504,11 +911,27 @@ const ProfilePage = () => {
           {activeTab === "orders" && (
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Your Orders</h2>
-              <OrderList orders={orders} onStartShopping={handleStartShopping} />
+              {isLoadingOrders ? (
+                <div className="flex justify-center items-center py-10">
+                  <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#82cee4]"></div>
+                </div>
+              ) : orders.length > 0 ? (
+                <OrderList orders={orders} onStartShopping={handleStartShopping} />
+              ) : (
+                <div className="text-center py-10">
+                  <p className="text-gray-500">You haven't placed any orders yet.</p>
+                  <button
+                    onClick={handleStartShopping}
+                    className="mt-4 px-4 py-2 bg-[#82cee4] hover:bg-[#62aee4] text-black font-bold rounded-full transition-colors"
+                  >
+                    Start Shopping
+                  </button>
+                </div>
+              )}
             </div>
           )}
 
-          {activeTab === "users" && currentUser.role === "admin" && (
+          {activeTab === "users" && user.role === "admin" && (
             <AdminTable
               title="User Management"
               columns={[
@@ -545,14 +968,18 @@ const ProfilePage = () => {
                 { key: "joined", label: "Joined" },
                 { key: "orders", label: "Orders" },
               ]}
-              data={users}
+              data={formattedUsers}
+              loading={isLoadingUsers}
+              pagination={pagination}
+              onPageChange={handlePageChange}
+              onSearch={handleSearch}
               onAdd={handleAddUser}
               onEdit={handleEditUser}
               onDelete={handleDeleteUser}
             />
           )}
 
-          {activeTab === "products" && currentUser.role === "admin" && (
+          {activeTab === "products" && user.role === "admin" && (
             <AdminTable
               title="Product Management"
               columns={[

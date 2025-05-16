@@ -1,3 +1,4 @@
+import { useAuth } from '@/context/AuthContext';
 import { useState, useEffect } from 'react';
 
 interface Product {
@@ -27,9 +28,18 @@ const useProducts = () => {
       setError(null);
   
       console.log('Fetching products from:', 'http://localhost:5000/api/products');
+
+      /*const response = await fetch('http://localhost:5000/api/products', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });*/
   
       const response = await fetch('http://localhost:5000/api/products');
       const data = await response.json();
+
+ 
   
       console.log('Response received:', data);
   

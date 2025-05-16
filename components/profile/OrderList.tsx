@@ -2,6 +2,7 @@
 
 import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface OrderItem {
   id: number;
@@ -23,10 +24,17 @@ interface Order {
 
 interface OrderListProps {
   orders: Order[];
-  onStartShopping: () => void;
+ // onStartShopping: () => void;
 }
 
-export const OrderList = ({ orders, onStartShopping }: OrderListProps) => {
+
+export const OrderList = ({ orders }: OrderListProps) => {
+  const router = useRouter();
+
+  const handleStartShopping = () => {
+    router.push("/collections");
+  };
+
   if (orders.length === 0) {
     return (
       <div className="text-center py-12">
@@ -36,7 +44,7 @@ export const OrderList = ({ orders, onStartShopping }: OrderListProps) => {
           Your orders will appear here once you make a purchase
         </p>
         <button
-          onClick={onStartShopping}
+          onClick={handleStartShopping}
           className="px-6 py-3 bg-[#f4b500] hover:bg-[#d4a017] text-black font-bold rounded-full transition-colors"
         >
           Start Shopping

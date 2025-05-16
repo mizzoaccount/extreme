@@ -1,10 +1,10 @@
 // app/checkout/page.tsx
-"use client";
+/*"use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useCartStore } from "@/stores/cartStore";
 import { useCheckoutStore } from "@/stores/checkoutStore";
-import { ArrowRight, Check, ChevronDown, CreditCard, ShoppingBag, Truck, Zap } from "lucide-react";
+import { ArrowRight, Check, CreditCard, ShoppingBag, Truck, Zap } from "lucide-react";
 import Link from "next/link";
 import NavbarTwo from "@/components/HeaderTwo";
 import LuxuryFooter from "@/components/LuxuryFooter";
@@ -131,7 +131,7 @@ const CheckoutPage = () => {
     <NavbarTwo />
     <div className="min-h-screen pt-24 pb-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Checkout Steps */}
+        {/* Checkout Steps *
         <div className="mb-12">
           <div className="flex justify-center">
             <div className="w-full max-w-3xl">
@@ -164,7 +164,7 @@ const CheckoutPage = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Checkout Form */}
+          {/* Checkout Form *
           <div className="lg:col-span-2">
             <form onSubmit={handleSubmit}>
               {activeStep === "shipping" && (
@@ -605,7 +605,7 @@ const CheckoutPage = () => {
             </form>
           </div>
 
-          {/* Order Summary */}
+          {/* Order Summary *
           <div className="lg:col-span-1">
             <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 sticky top-24">
               <h2 className="text-xl font-bold text-gray-900 mb-6">Order Summary</h2>
@@ -673,6 +673,136 @@ const CheckoutPage = () => {
       </div>
     </div>
     <LuxuryFooter />
+    </>
+  );
+};
+
+export default CheckoutPage;*/
+
+"use client";
+import { useState } from "react";
+import { useCartStore } from "@/stores/cartStore";
+import { useCheckoutStore } from "@/stores/checkoutStore";
+import NavbarTwo from "@/components/HeaderTwo";
+import LuxuryFooter from "@/components/LuxuryFooter";
+import { CheckoutEmpty } from "@/components/checkout/CheckoutEmpty";
+import { CheckoutSteps } from "@/components/checkout/CheckoutSteps";
+import { ShippingForm } from "@/components/checkout/ShippingForm";
+import { PaymentMethods } from "@/components/checkout/PaymentMethods";
+import { ReviewSection } from "@/components/checkout/ReviewSection";
+import { OrderSummary } from "@/components/checkout/OrderSummary";
+
+const CheckoutPage = () => {
+  const { items, totalPrice, clearCart } = useCartStore();
+  const {
+    shippingInfo,
+    paymentMethod,
+    deliveryMethod,
+    setShippingInfo,
+    setPaymentMethod,
+    setDeliveryMethod,
+    resetCheckout,
+  } = useCheckoutStore();
+
+  const [activeStep, setActiveStep] = useState<"shipping" | "payment" | "review">("shipping");
+  const [showPaymentForm, setShowPaymentForm] = useState(false);
+
+  const deliveryOptions = [/* ... */];
+  const paymentMethods = [/* ... */];
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (activeStep === "shipping") setActiveStep("payment");
+    else if (activeStep === "payment") setActiveStep("review");
+  };
+
+  const handlePlaceOrder = () => {
+    console.log("Order placed:", { shippingInfo, paymentMethod, deliveryMethod });
+    clearCart();
+    resetCheckout();
+  };
+
+  if (items.length === 0 && activeStep !== "review") {
+    return (
+      <div className="min-h-screen pt-24 pb-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <CheckoutEmpty />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <NavbarTwo />
+      <div className="min-h-screen pt-24 pb-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Checkout Steps Indicator */}
+          <div className="mb-12">
+            {/* ... */}
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Checkout Form */}
+            <div className="lg:col-span-2">
+              <form onSubmit={handleSubmit}>
+                {activeStep === "shipping" && (
+                  <ShippingForm
+                    shippingInfo={shippingInfo}
+                    setShippingInfo={setShippingInfo}
+                    deliveryMethod={deliveryMethod}
+                    setDeliveryMethod={setDeliveryMethod}
+                    deliveryOptions={deliveryOptions}
+                  />
+                )}
+
+                {activeStep === "payment" && (
+                  <PaymentMethods
+                    methods={paymentMethods}
+                    selected={paymentMethod}
+                    onSelect={(id) => {
+                      setPaymentMethod(id);
+                      setShowPaymentForm(id === "credit-card");
+                    }}
+                    showForm={showPaymentForm}
+                  />
+                )}
+
+                {activeStep === "review" && (
+                  <ReviewSection
+                    shippingInfo={shippingInfo}
+                    paymentMethod={paymentMethod}
+                    deliveryMethod={deliveryMethod}
+                    items={items}
+                    totalPrice={totalPrice}
+                    deliveryOptions={deliveryOptions}
+                  />
+                )}
+
+                <CheckoutSteps
+                  activeStep={activeStep}
+                  setActiveStep={setActiveStep}
+                  handlePlaceOrder={handlePlaceOrder}
+                  canProceed={activeStep === "shipping" ? !!deliveryMethod : !!paymentMethod}
+                  isLastStep={activeStep === "review"}
+                />
+              </form>
+            </div>
+
+            {/* Order Summary */}
+            <div className="lg:col-span-1">
+              <OrderSummary
+                items={items}
+                totalPrice={totalPrice}
+                deliveryMethod={deliveryMethod}
+                deliveryOptions={deliveryOptions}
+                sticky={true}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <LuxuryFooter />
     </>
   );
 };

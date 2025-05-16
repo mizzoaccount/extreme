@@ -11,14 +11,14 @@ interface Address {
 }
 
 interface ProfileInfoSectionProps {
-  name: string;
+  firstName: string;
   email: string;
   shippingAddress: Address;
   billingAddress: Address;
 }
 
 export const ProfileInfoSection = ({
-  name,
+ firstName,
   email,
   shippingAddress,
   billingAddress,
@@ -29,7 +29,7 @@ export const ProfileInfoSection = ({
       <div className="space-y-4">
         <div>
           <p className="text-sm text-gray-500">Full Name</p>
-          <p className="text-gray-900">{name}</p>
+          <p className="text-gray-900">{firstName}</p>
         </div>
         <div>
           <p className="text-sm text-gray-500">Email Address</p>
@@ -48,7 +48,7 @@ export const ProfileInfoSection = ({
           <p className="text-gray-600 text-sm">
             {shippingAddress.street}
             <br />
-            {shippingAddress.city}, {shippingAddress.state} {shippingAddress.zip}
+            {shippingAddress.city} {shippingAddress.state} {shippingAddress.zip}
             <br />
             {shippingAddress.country}
           </p>
@@ -60,7 +60,7 @@ export const ProfileInfoSection = ({
           <p className="text-gray-600 text-sm">
             {billingAddress.street}
             <br />
-            {billingAddress.city}, {billingAddress.state} {billingAddress.zip}
+            {billingAddress.city} {billingAddress.state} {billingAddress.zip}
             <br />
             {billingAddress.country}
           </p>

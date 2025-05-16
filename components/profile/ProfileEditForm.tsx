@@ -4,7 +4,8 @@ import { ShoppingBag, CreditCard } from "lucide-react";
 import { ChangeEvent } from "react";
 
 interface FormData {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   shippingStreet: string;
   shippingCity: string;
@@ -37,13 +38,28 @@ export const ProfileEditForm = ({
       <div className="space-y-4">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-            Full Name
+            First Name
           </label>
           <input
             type="text"
             id="name"
             name="name"
-            value={formData.name}
+            value={formData.firstName}
+            onChange={onInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-[#f4b500] focus:border-[#f4b500]"
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            Last Name
+          </label>
+          <input
+            type="text"
+            id="lastname"
+            name="lastname"
+            value={formData.lastName}
             onChange={onInputChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-[#f4b500] focus:border-[#f4b500]"
             required
