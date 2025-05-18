@@ -248,42 +248,48 @@ const Navbar = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed w-full z-50 ${scrolled ? "bg-gray-900/90 backdrop-blur-sm" : "bg-gray-900/90 backdrop-blur-sm"} transition-all duration-300`}
+      className={`fixed w-full z-50 ${scrolled ? "bg-black/90 backdrop-blur-sm" : "bg-transparent"} transition-all duration-300`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <motion.div whileHover={{ scale: 1.05 }} className="flex items-center">
+          {/* Logo */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center"
+          >
             <Link href="/" className="text-white font-bold text-2xl">
               <span className="group relative">
-                <span className="block group-hover:opacity-0 transition-opacity">Extreme</span>
-                <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-clip-text text-transparent bg-gradient-to-r from-[#f4b500] to-[#d4a017]">
+                <span className="block group-hover:opacity-0 transition-opacity">EC</span>
+                <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-clip-text text-transparent bg-gradient-to-r from-[#f4b500] to-[#ffffff]">
                   Extreme
                 </span>
               </span>
             </Link>
           </motion.div>
 
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                onClick={handleLinkClick}
-                className={`relative text-white/80 hover:text-white transition-colors ${pathname === link.href ? "text-[#f4b500]" : ""}`}
-                whileHover={{ scale: 1.05 }}
-              >
-                {link.name}
-                {pathname === link.href && (
-                  <motion.span
-                    layoutId="activeLink"
-                    className="absolute left-0 bottom-0 w-full h-px bg-[#f4b500]"
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  />
-                )}
-              </motion.a>
+              <Link href={link.href} passHref legacyBehavior key={link.name}>
+                <motion.a
+                  onClick={handleLinkClick}
+                  className={`relative text-white/80 hover:text-white transition-colors ${pathname === link.href ? "text-[#f4b500]" : ""}`}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  {link.name}
+                  {pathname === link.href && (
+                    <motion.span
+                      layoutId="activeLink"
+                      className="absolute left-0 bottom-0 w-full h-px bg-[#f4b500]"
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    />
+                  )}
+                </motion.a>
+              </Link>
             ))}
           </nav>
 
+          {/* Right-side icons */}
           <div className="hidden md:flex items-center space-x-6">
             <Link href="/search" passHref legacyBehavior>
               <motion.a
@@ -333,6 +339,7 @@ const Navbar = () => {
             </Link>
           </div>
 
+          {/* Mobile Menu Button */}
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden text-white"
@@ -343,6 +350,7 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Mobile Menu (Drawer Effect) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -350,19 +358,19 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ type: "spring", damping: 25 }}
-            className="md:hidden bg-gray-900/95 backdrop-blur-lg border-t border-gray-800"
+            className="md:hidden bg-black/95 backdrop-blur-lg border-t border-[#333]"
           >
             <div className="px-4 py-6 space-y-6">
               {navLinks.map((link) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  onClick={handleLinkClick}
-                  className={`block text-white/80 hover:text-white text-lg ${pathname === link.href ? "text-[#f4b500] font-medium" : ""}`}
-                  whileHover={{ x: 5 }}
-                >
-                  {link.name}
-                </motion.a>
+                <Link href={link.href} passHref legacyBehavior key={link.name}>
+                  <motion.a
+                    onClick={handleLinkClick}
+                    className={`block text-white/80 hover:text-white text-lg ${pathname === link.href ? "text-[#f4b500] font-medium" : ""}`}
+                    whileHover={{ x: 5 }}
+                  >
+                    {link.name}
+                  </motion.a>
+                </Link>
               ))}
               <div className="flex items-center space-x-6 pt-6">
                 <Link href="/search" passHref legacyBehavior>
