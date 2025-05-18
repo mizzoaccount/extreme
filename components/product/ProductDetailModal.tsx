@@ -586,7 +586,7 @@ const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
                 onClick={toggleWishlist}
                 className={`p-3 rounded-full border flex items-center justify-center ${isWishlisted ? 'bg-red-50 border-red-200 text-red-500' : 'border-gray-300 hover:border-[#f4b500]'}`}
               >
-                <Heart size={20} fill={isWishlisted ? "currentColor" : "none"} />
+                <Heart size={20} fill={isWishlisted ? "currentColor" : "black"} />
               </button>
             </div>
           </div>

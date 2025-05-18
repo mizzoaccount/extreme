@@ -44,12 +44,12 @@ export default function Home() {
         <Hero />
         <FeaturedCollections />
         <SpecialOffers />
-        <DesignerShowcase />
+        {/*<DesignerShowcase />
         <Testimonials />
         <CelebritySpotlight />
         <SocialMediaIntegration />
         <NewsletterSignup />
-        <FashionBlogSection />
+        <FashionBlogSection />*/}
         <LuxuryFooter />
       
       </main>

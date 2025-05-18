@@ -9,6 +9,7 @@ import { AnimatePresence } from "framer-motion";
 import { ProductCard } from "./product/ProductCard";
 import { useCartStore } from "@/stores/cartStore";
 import { useWishlistStore } from "@/stores/wishlistStore";
+import Link from "next/link";
 
 
 interface Product {
@@ -306,7 +307,7 @@ const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
                 onClick={toggleWishlist}
                 className={`p-3 rounded-full border flex items-center justify-center ${isWishlisted ? 'bg-red-50 border-red-200 text-red-500' : 'border-gray-300 hover:border-[#f4b500]'}`}
               >
-                <Heart size={20} fill={isWishlisted ? "currentColor" : "none"} />
+                <Heart size={20} fill={isWishlisted ? "currentColor" : "black"} />
               </button>
             </div>
           </div>
@@ -415,13 +416,16 @@ const FeaturedCollectionsLight = () => {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <button className="relative overflow-hidden group border-2 border-[#f4b500] text-gray-900 hover:text-black font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-md">
-            <span className="relative z-10 flex items-center gap-2">
-              View All Collections <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </span>
-            <span className="absolute inset-0 bg-[#f4b500] opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></span>
-          </button>
+          <Link href="/collections">
+            <button className="relative overflow-hidden group border-2 border-[#f4b500] text-gray-900 hover:text-black font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-md">
+              <span className="relative z-10 flex items-center gap-2">
+                View All Collections <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </span>
+              <span className="absolute inset-0 bg-[#f4b500] opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></span>
+            </button>
+          </Link>
         </motion.div>
+
         {/* Close max-w-7xl mx-auto div */}
       </div>
       {/* Product Detail Modal */}

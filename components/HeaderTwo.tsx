@@ -28,7 +28,7 @@ const NavbarTwo = () => {
     { name: "About", href: "/about" },
     { name: "Collections", href: "/collections" },
     { name: "Offers", href: "/offers" },
-    { name: "Guide", href: "/boutique" },
+    //{ name: "Guide", href: "/boutique" },
     { name: "Contact", href: "/contact" },
   ];
 
