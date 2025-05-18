@@ -34,7 +34,7 @@ interface ProductFormData {
   attributes: Record<string, any>;
 }
 
-const productHierarchy: Record<string, {
+/*const productHierarchy: Record<string, {
   subCategories: Record<string, {
     brands: string[];
     attributes: Record<string, Attribute>;
@@ -104,10 +104,10 @@ const productHierarchy: Record<string, {
       },
     },
   },
-};
+};*/
 
 
-/*const productHierarchy: Record<string, {
+const productHierarchy: Record<string, {
   subCategories: Record<string, {
     brands: string[];
     attributes: Record<string, Attribute>;
@@ -204,7 +204,7 @@ const productHierarchy: Record<string, {
       },
     },
   },
-};*/
+};
 
 export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProps) => {
   const [formData, setFormData] = useState<ProductFormData>({

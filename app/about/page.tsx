@@ -119,28 +119,40 @@ const AboutPage = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Our <span className="text-[#f4b500]">Philosophy</span>
-            </h2>
-            <p className="text-lg text-gray-600 mb-6">
-              At Extreme Collections, we believe fashion should be fearless. Our designs blend Italian craftsmanship with streetwise edge, creating pieces that make statements without saying a word.
-            </p>
-            <p className="text-lg text-gray-600 mb-8">
-              We're not just selling clothes - we're offering armor for the modern individual. Each collection is a carefully curated rebellion against the ordinary.
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-6 py-3 border-2 border-black text-black font-bold rounded-full hover:bg-black hover:text-white transition-colors"
-            >
-              Meet The Team
-            </motion.button>
-          </motion.div>
+  initial={{ opacity: 0, x: -50 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+>
+  <h2 className="text-4xl font-bold text-gray-900 mb-6">
+    Our <span className="text-[#f4b500]">Philosophy</span>
+  </h2>
+
+  <p className="text-lg text-gray-600 mb-4">
+    At <strong>Extreme Collection</strong>, fashion is more than just clothing it's a bold statement of identity, confidence, and self-expression.
+  </p>
+
+  <p className="text-lg text-gray-600 mb-4">
+    We’re a boutique that brings together the finest <strong>streetwear and luxury casualwear</strong> from both Kenyan and international brands. From hidden gems to exclusive finds, our curated selections make shopping effortless, stylish, and personal.
+  </p>
+
+  <p className="text-lg text-gray-600 mb-4">
+    We champion upcoming designers, giving them a platform to shine ensuring our clients access rare, high-quality items they won’t find anywhere else. Every piece we stock is chosen with intention, blending trend, quality, and story.
+  </p>
+
+  <p className="text-lg text-gray-600 mb-8">
+    At Extreme Collection, you don’t just shop <strong>you shop your style</strong>.
+  </p>
+
+  <motion.button
+    whileHover={{ scale: 1.02 }}
+    whileTap={{ scale: 0.98 }}
+    className="px-6 py-3 border-2 border-black text-black font-bold rounded-full hover:bg-black hover:text-white transition-colors"
+  >
+    Meet The Team
+  </motion.button>
+</motion.div>
+
           
           <motion.div
             initial={{ opacity: 0, x: 50 }}
@@ -183,7 +195,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Timeline Section */}
+      {/* Timeline Section *
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <motion.h2
@@ -197,10 +209,10 @@ const AboutPage = () => {
           </motion.h2>
           
           <div className="relative">
-            {/* Vertical line */}
+            {/* Vertical line *
             <div className="absolute left-1/2 h-full w-0.5 bg-[#f4b500] transform -translate-x-1/2 z-0"></div>
             
-            {/* Timeline items */}
+            {/* Timeline items *
             <div className="space-y-16">
               {timeline.map((item, index) => (
                 <motion.div
@@ -211,17 +223,17 @@ const AboutPage = () => {
                   viewport={{ once: true }}
                   className={`relative flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} items-center`}
                 >
-                  {/* Year */}
+                  {/* Year *
                   <div className="w-1/2 px-8">
                     <div className={`text-2xl font-bold ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
                       {item.year}
                     </div>
                   </div>
                   
-                  {/* Dot */}
+                  {/* Dot *
                   <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-[#f4b500] border-4 border-white z-10"></div>
                   
-                  {/* Content */}
+                  {/* Content *
                   <div className="w-1/2 px-8">
                     <div className={`bg-white p-6 rounded-xl shadow-lg ${index % 2 === 0 ? 'ml-auto' : 'mr-auto'}`}>
                       <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
@@ -240,7 +252,65 @@ const AboutPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section>*/}
+      {/* Timeline Section */}
+<section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+  <div className="max-w-4xl mx-auto">
+    <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="text-4xl font-bold text-center text-gray-900 mb-16"
+    >
+      Our <span className="text-[#f4b500]">Journey</span>
+    </motion.h2>
+    
+    <div className="relative">
+      {/* Vertical line */}
+      <div className="absolute left-1/2 h-full w-0.5 bg-[#f4b500] transform -translate-x-1/2 z-0"></div>
+      
+      {/* Timeline items */}
+      <div className="space-y-16">
+        {timeline.map((item, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            viewport={{ once: true }}
+            className={`relative flex flex-col items-center md:flex-row md:${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} md:items-start`}
+          >
+            {/* Year */}
+            <div className="w-full md:w-1/2 px-4 md:px-8 text-center md:text-left">
+              <div className={`text-2xl font-bold md:text-3xl`}>
+                {item.year}
+              </div>
+            </div>
+            
+            {/* Dot */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-[#f4b500] border-4 border-white z-10 mt-4 md:mt-0"></div>
+            
+            {/* Content */}
+            <div className="w-full md:w-1/2 px-4 md:px-8 mt-4 md:mt-0">
+              <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600 mb-4">{item.description}</p>
+                <div className="h-48 overflow-hidden rounded-lg">
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Team Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">

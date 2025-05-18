@@ -82,7 +82,7 @@ const CartPage = () => {
                             >
                               -
                             </button>
-                            <span className="px-3">{item.quantity}</span>
+                            <span className="px-3 text-gray-600">{item.quantity}</span>
                             <button
                               onClick={() => updateQuantity(item.id, item.size, item.quantity + 1)}
                               disabled={item.quantity >= item.stock}
@@ -92,7 +92,7 @@ const CartPage = () => {
                             </button>
                           </div>
                           <p className="text-lg font-bold text-[#f4b500]">
-                            ${(item.price * item.quantity).toLocaleString()}
+                            Ksh {(item.price * item.quantity).toLocaleString()}
                           </p>
                         </div>
                       </div>
@@ -117,7 +117,7 @@ const CartPage = () => {
                   <div className="space-y-4">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Subtotal</span>
-                      <span className="font-medium">${totalPrice().toLocaleString()}</span>
+                      <span className="font-medium">Ksh {totalPrice().toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Shipping</span>
@@ -132,9 +132,9 @@ const CartPage = () => {
                   <div className="border-t border-gray-200 my-6"></div>
 
                   <div className="flex justify-between mb-8">
-                    <span className="text-lg font-bold">Total</span>
+                    <span className="text-lg font-bold text-gray-600">Total</span>
                     <span className="text-lg font-bold text-[#f4b500]">
-                      ${totalPrice().toLocaleString()}
+                      Ksh {totalPrice().toLocaleString()}
                     </span>
                   </div>
 

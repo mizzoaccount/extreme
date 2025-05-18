@@ -291,7 +291,7 @@ const Navbar = () => {
 
           {/* Right-side icons */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link href="/search" passHref legacyBehavior>
+            <Link href="/collections" passHref legacyBehavior>
               <motion.a
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}

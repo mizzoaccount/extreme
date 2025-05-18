@@ -166,7 +166,7 @@ const NavbarTwo = () => {
                 </Link>
               ))}
               <div className="flex items-center space-x-6 pt-6">
-                <Link href="/search" passHref legacyBehavior>
+                <Link href="/collections" passHref legacyBehavior>
                   <motion.a whileHover={{ scale: 1.1 }} className="text-white/80 hover:text-white">
                     <Search size={20} />
                   </motion.a>
