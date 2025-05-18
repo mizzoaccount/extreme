@@ -77,3 +77,6 @@ body {
     transition-duration: 200ms;
   }
 }
+.modal-open {
+  overflow: hidden;
+}
