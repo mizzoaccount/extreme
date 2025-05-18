@@ -10,6 +10,7 @@ import { ProductCard } from "./product/ProductCard";
 import { useCartStore } from "@/stores/cartStore";
 import { useWishlistStore } from "@/stores/wishlistStore";
 
+
 interface Product {
   _id: string;
   name: string;
@@ -41,6 +42,7 @@ interface ProductDetailModalProps {
   };
   onClose: () => void;
 }
+
 
 const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -121,7 +123,7 @@ const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
             onClick={onClose}
             className="absolute top-4 right-4 z-20 p-2 bg-white/80 rounded-full hover:bg-[#f4b500] hover:text-white transition-colors shadow-lg"
           >
-            <X size={20} />
+            <X size={20} color="black" />
           </button>
 
           <div className="flex-1 overflow-y-auto">
@@ -144,7 +146,8 @@ const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
                       }}
                       className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/80 rounded-full hover:bg-[#f4b500] hover:text-white transition-colors shadow-lg"
                     >
-                      <ChevronLeft size={24} />
+                    <ChevronLeft size={24} className="text-black" />
+
                     </button>
                     <button
                       onClick={(e) => {
@@ -153,7 +156,8 @@ const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
                       }}
                       className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/80 rounded-full hover:bg-[#f4b500] hover:text-white transition-colors shadow-lg"
                     >
-                      <ChevronRight size={24} />
+                      <ChevronRight size={24} className="text-black" />
+
                     </button>
                   </>
                 )}
@@ -235,7 +239,7 @@ const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
                     {attributes.map((attr, index) => (
                       <div key={index} className="bg-gray-50 p-2 lg:p-3 rounded-lg">
                         <p className="text-xs text-gray-500">{attr.label}</p>
-                        <p className="font-medium text-sm lg:text-base">{attr.value}</p>
+                        <p className="font-medium text-sm lg:text-base text-gray-500">{attr.value}</p>
                       </div>
                     ))}
                   </div>
@@ -262,15 +266,15 @@ const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
                     <div className="mt-2 flex items-center gap-4">
                       <button
                         onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                        className="p-1 lg:p-2 border border-gray-300 rounded-md hover:bg-gray-100"
+                        className="p-1 lg:p-2 border border-gray-300 rounded-md text-black hover:bg-gray-100"
                         disabled={quantity <= 1}
                       >
                         -
                       </button>
-                      <span className="w-8 text-center">{quantity}</span>
+                      <span className="w-8 text-center text-black">{quantity}</span>
                       <button
                         onClick={() => setQuantity(quantity + 1)}
-                        className="p-1 lg:p-2 border border-gray-300 rounded-md hover:bg-gray-100"
+                        className="p-1 lg:p-2 border border-gray-300 rounded-md text-black hover:bg-gray-100"
                         disabled={quantity >= product.stock}
                       >
                         +
