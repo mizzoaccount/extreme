@@ -369,7 +369,7 @@ const FeaturedCollectionsLight = () => {
           </span>
           <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#f4b500] to-[#d4a017]">
-              Featured Lab Products
+              Featured Collections
             </span>
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
