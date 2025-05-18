@@ -911,7 +911,7 @@ const ProfilePage = () => {
           {activeTab === "orders" && (
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Your Orders</h2>
-              {isLoadingOrders ? (
+             {/*} {isLoadingOrders ? (
                 <div className="flex justify-center items-center py-10">
                   <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#f4b500]"></div>
                 </div>
@@ -927,7 +927,7 @@ const ProfilePage = () => {
                     Start Shopping
                   </button>
                 </div>
-              )}
+              )}*/}
             </div>
           )}
 
