@@ -312,7 +312,7 @@ const AboutPage = () => {
   </div>
 </section>
 
-      {/* Team Section */}
+      {/* Team Section *
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
@@ -367,7 +367,7 @@ const AboutPage = () => {
             </motion.div>
           ))}
         </div>
-      </section>
+      </section>*/}
 
       {/* Sustainability Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black text-white">
