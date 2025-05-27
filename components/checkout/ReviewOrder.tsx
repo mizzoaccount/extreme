@@ -494,6 +494,7 @@ import orderService from "@/utils/orderService";
 
 interface ReviewOrderProps {
   onBack: () => void;
+  onPlaceOrder: () => void;
 }
 
 interface OrderItem {
