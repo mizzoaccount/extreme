@@ -313,7 +313,7 @@ export const ProductModal = ({ isOpen, onClose, onAddProduct }: ProductModalProp
         formDataToSend.append('images', image);
       });
   
-      const response = await fetch('http://localhost:5000/api/products', {
+      const response = await fetch('https://extreme-backend.onrender.com/api/products', {
         method: 'POST',
         body: formDataToSend,
       });

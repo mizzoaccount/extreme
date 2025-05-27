@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/orders';
+const API_URL = 'https://extreme-backend.onrender.com/api/orders';
 
 // Place a new order
 const placeOrder = async (orderData: any, token: string) => {
