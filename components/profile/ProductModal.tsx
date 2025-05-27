@@ -643,10 +643,6 @@ interface Attribute {
   nestedAttributes?: Record<string, Attribute>;
 }
 
-interface CategoryConfig {
-  label: string;
-  attributes: Record<string, Attribute>;
-}
 
 interface ProductFormData {
   name: string;
