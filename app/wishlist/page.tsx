@@ -14,15 +14,14 @@ const WishlistPage = () => {
   const { addItem } = useCartStore();
 
   const handleAddToCart = (product: any) => {
-    addItem({
-      id: product.id,
-      name: product.name,
-      designer: product.designer,
-      price: product.price,
-      image: product.image,
-      size: "M", // Default size
-      stock: 10, // Default stock
-    });
+addItem({
+  id: product.id,
+  name: product.name,
+  price: product.price,
+  image: product.image,
+  stock: 10, // Default stock
+  brand: product.brand ?? "", // Provide brand or fallback to empty string
+});
   };
 
   return (
@@ -76,7 +75,7 @@ const WishlistPage = () => {
                     <div className="flex justify-between items-start">
                       <div>
                         <h3 className="text-lg font-bold text-gray-900">{item.name}</h3>
-                        <p className="text-gray-500 text-sm">{item.designer}</p>
+                      
                       </div>
                       <div className="text-right">
                         <p className="text-[#f4b500] font-bold">${item.price.toLocaleString()}</p>
