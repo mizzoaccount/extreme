@@ -467,7 +467,7 @@ const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
                 <div>
                   <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">{product.name}</h1>
                   <p className="text-base lg:text-lg text-gray-600 mt-1"><span className="font-bold">Brand:</span> {product.category.brand}</p>
-                   <p className="text-base lg:text-lg text-gray-600 mt-1">{product.description}</p>
+                 
 
                   {/* Rating */}
                   <div className="mt-3 lg:mt-4 flex items-center gap-2">
