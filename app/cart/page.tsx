@@ -3,6 +3,18 @@ import { motion } from "framer-motion";
 import { ShoppingBag, X, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useCartStore } from "@/stores/cartStore";
+
+// If not already defined elsewhere, define the CartItem type here for clarity
+type CartItem = {
+  id: string;
+  name: string;
+  image: string;
+  price: number;
+  quantity: number;
+  size?: string; // Make size optional if not always present
+  stock: number;
+  designer: string;
+};
 import Image from "next/image";
 import NavbarTwo from "@/components/HeaderTwo";
 import LuxuryFooter from "@/components/LuxuryFooter";
@@ -44,7 +56,7 @@ const CartPage = () => {
                 <div className="space-y-8">
                   {items.map((item) => (
                     <motion.div
-                      key={`${item.id}-${item.size}`}
+                      key={item.id}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.5 }}
@@ -62,11 +74,10 @@ const CartPage = () => {
                         <div className="flex justify-between items-start">
                           <div>
                             <h3 className="text-lg font-bold text-gray-900">{item.name}</h3>
-                            <p className="text-gray-500 text-sm">{item.designer}</p>
-                            <p className="text-gray-500 text-sm mt-2">Size: {item.size}</p>
+                          
                           </div>
                           <button
-                            onClick={() => removeItem(item.id, item.size)}
+                            onClick={() => removeItem(item.id)}
                             className="text-gray-400 hover:text-gray-600"
                           >
                             <X size={18} />
@@ -76,7 +87,7 @@ const CartPage = () => {
                         <div className="mt-4 flex items-center justify-between">
                           <div className="flex items-center border border-gray-200 rounded-full">
                             <button
-                              onClick={() => updateQuantity(item.id, item.size, item.quantity - 1)}
+                              onClick={() => updateQuantity(item.id, item.quantity - 1)}
                               disabled={item.quantity <= 1}
                               className="px-3 py-1 text-gray-600 disabled:text-gray-300"
                             >
@@ -84,7 +95,7 @@ const CartPage = () => {
                             </button>
                             <span className="px-3 text-gray-600">{item.quantity}</span>
                             <button
-                              onClick={() => updateQuantity(item.id, item.size, item.quantity + 1)}
+                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
                               disabled={item.quantity >= item.stock}
                               className="px-3 py-1 text-gray-600 disabled:text-gray-300"
                             >
