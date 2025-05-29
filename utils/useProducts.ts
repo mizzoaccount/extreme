@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 interface Product {
   _id: string;
   name: string;
-  designer: string;
+  description: string;
   category: {
     main: string;
     sub: string;

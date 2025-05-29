@@ -10,12 +10,13 @@ import { ProductCard } from "./product/ProductCard";
 import { useCartStore } from "@/stores/cartStore";
 import { useWishlistStore } from "@/stores/wishlistStore";
 import Link from "next/link";
+import { describe } from "node:test";
 
 
 interface Product {
   _id: string;
   name: string;
-  designer: string;
+  description: string;
   category: {
     main: string;
     sub: string;
@@ -30,50 +31,58 @@ interface Product {
 
 interface ProductDetailModalProps {
   product: {
-    id: string;
+    _id: string;
     name: string;
-    designer: string;
+    description: string;
     price: number;
-    originalPrice: number;
     images: string[];
-    rating: number;
-    isNew: boolean;
-    attributes: Record<string, string>;
     stock: number;
+    category: {
+      main: string;
+      sub: string;
+      brand: string;
+    };
+    attributes: {
+      Colorway?: string;
+      ReleaseDate?: string;
+      Size?: string;
+      [key: string]: any;
+    };
+    createdAt: string;
   };
   onClose: () => void;
+  theme?: {
+    primary: string;
+    hover: string;
+    text: string;
+  };
 }
 
 
 const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
   const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
 
   const addToCart = useCartStore((state) => state.addItem);
   const { items, addItem, removeItem } = useWishlistStore();
-  const isWishlisted = items.some((item) => item.id === product.id);
+  const isWishlisted = items.some((item) => item.id === product._id);
 
-  const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
   const attributes = [
-    { label: "Color", value: product.attributes?.color || "Navy Blue" },
-    { label: "Material", value: product.attributes?.material || "100% Cotton" },
-    { label: "Fit", value: product.attributes?.fit || "Regular" },
-    { label: "Style", value: product.attributes?.style || "Casual" },
+    { label: "Colorway", value: product.attributes?.Colorway || "Not specified" },
+    { label: "Release Date", value: product.attributes?.ReleaseDate || "Not specified" },
+    { label: "Size", value: product.attributes?.Size || "Not specified" },
+    { label: "Category", value: `${product.category.main} / ${product.category.sub}` },
   ];
 
   const handleAddToCart = () => {
-    if (!selectedSize) return;
-
     addToCart({
-      id: product.id,
+      id: product._id,
       name: product.name,
-      designer: product.designer,
       price: product.price,
       image: product.images[0],
-      size: selectedSize,
       stock: product.stock,
+      brand: product.category.brand,
     });
 
     setAddedToCart(true);
@@ -82,14 +91,14 @@ const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
 
   const toggleWishlist = () => {
     if (isWishlisted) {
-      removeItem(product.id);
+      removeItem(product._id);
     } else {
       addItem({
-        id: product.id,
+        id: product._id,
         name: product.name,
-        designer: product.designer,
         price: product.price,
         image: product.images[0],
+        brand: product.category.brand,
       });
     }
   };
@@ -147,8 +156,7 @@ const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
                       }}
                       className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/80 rounded-full hover:bg-[#f4b500] hover:text-white transition-colors shadow-lg"
                     >
-                    <ChevronLeft size={24} className="text-black" />
-
+                      <ChevronLeft size={24} className="text-black" />
                     </button>
                     <button
                       onClick={(e) => {
@@ -158,7 +166,6 @@ const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
                       className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/80 rounded-full hover:bg-[#f4b500] hover:text-white transition-colors shadow-lg"
                     >
                       <ChevronRight size={24} className="text-black" />
-
                     </button>
                   </>
                 )}
@@ -184,55 +191,28 @@ const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
                     ))}
                   </div>
                 )}
-
-                {/* Badges */}
-                <div className="absolute top-4 left-4 flex gap-2 z-10">
-                  {product.isNew && (
-                    <span className="bg-[#f4b500] text-black text-xs font-bold px-3 py-1 rounded-full">
-                      NEW
-                    </span>
-                  )}
-                  {product.originalPrice > product.price && (
-                    <span className="bg-white text-black text-xs font-bold px-3 py-1 rounded-full border border-gray-200">
-                      -{Math.round((1 - product.price / product.originalPrice) * 100)}%
-                    </span>
-                  )}
-                </div>
               </div>
 
               {/* Product Info */}
               <div className="p-6 lg:p-8">
                 <div>
                   <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">{product.name}</h1>
-                  <p className="text-base lg:text-lg text-gray-600 mt-1">{product.designer}</p>
+                   <p className="text-base lg:text-lg text-gray-600 mt-1"><span className="font-bold">Brand:</span> {product.category.brand}</p>
+                  
 
                   {/* Rating */}
                   <div className="mt-3 lg:mt-4 flex items-center gap-2">
-                    <div className="flex">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          size={16}
-                          className={i < Math.floor(product.rating) ? "text-[#f4b500] fill-[#f4b500]" : "text-gray-300"}
-                        />
-                      ))}
-                    </div>
-                    <span className="text-gray-500 text-sm">({product.rating.toFixed(1)})</span>
-                    <span className="text-gray-500 text-sm ml-2">• {product.stock} in stock</span>
+                    <span className="text-gray-500 text-sm">• {product.stock} in stock</span>
                   </div>
 
                   {/* Price */}
                   <div className="mt-4 lg:mt-6">
                     <p className="text-xl lg:text-2xl font-bold text-[#f4b500]">Ksh {product.price.toLocaleString()}</p>
-                    {product.originalPrice > product.price && (
-                      <p className="text-gray-400 text-sm line-through">Ksh {product.originalPrice.toLocaleString()}</p>
-                    )}
                   </div>
 
                   {/* Description */}
                   <p className="mt-4 lg:mt-6 text-gray-700 text-sm lg:text-base">
-                    This premium quality product features a timeless design with meticulous attention to detail. 
-                    Perfect for both casual and formal occasions, it combines comfort with style.
+                    {product.description}
                   </p>
 
                   {/* Attributes */}
@@ -243,22 +223,6 @@ const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
                         <p className="font-medium text-sm lg:text-base text-gray-500">{attr.value}</p>
                       </div>
                     ))}
-                  </div>
-
-                  {/* Size Selector */}
-                  <div className="mt-6 lg:mt-8">
-                    <h3 className="text-sm font-medium text-gray-900">Size</h3>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {sizes.map((size) => (
-                        <button
-                          key={size}
-                          onClick={() => setSelectedSize(size)}
-                          className={`px-3 lg:px-4 py-1 lg:py-2 border rounded-md text-sm font-medium transition-all ${selectedSize === size ? 'bg-[#f4b500] text-white border-[#f4b500]' : 'bg-white text-gray-900 border-gray-300 hover:border-[#f4b500]'}`}
-                        >
-                          {size}
-                        </button>
-                      ))}
-                    </div>
                   </div>
 
                   {/* Quantity Selector */}
@@ -287,15 +251,15 @@ const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
             </div>
           </div>
 
-          {/* Sticky Action Buttons - Now visible on all screen sizes */}
+          {/* Sticky Action Buttons */}
           <div className="sticky bottom-0 bg-white border-t border-gray-200 p-4">
             <div className="flex flex-col sm:flex-row gap-3">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleAddToCart}
-                disabled={addedToCart || !selectedSize}
-                className={`flex-1 py-3 px-6 rounded-full font-bold flex items-center justify-center gap-2 transition-colors ${addedToCart ? 'bg-green-500 text-white' : !selectedSize ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-[#f4b500] hover:bg-[#d4a017] text-black'}`}
+                disabled={addedToCart}
+                className={`flex-1 py-3 px-6 rounded-full font-bold flex items-center justify-center gap-2 transition-colors ${addedToCart ? 'bg-green-500 text-white' : 'bg-[#f4b500] hover:bg-[#d4a017] text-black'}`}
               >
                 {addedToCart ? (
                   <><Check size={18} /> Added to Cart</>
@@ -307,7 +271,7 @@ const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
                 onClick={toggleWishlist}
                 className={`p-3 rounded-full border flex items-center justify-center ${isWishlisted ? 'bg-red-50 border-red-200 text-red-500' : 'border-gray-300 hover:border-[#f4b500]'}`}
               >
-                <Heart size={20} fill={isWishlisted ? "currentColor" : "black"} />
+                <Heart size={20} fill={isWishlisted ? "currentColor" : "none"} />
               </button>
             </div>
           </div>
@@ -319,22 +283,30 @@ const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
 
 const FeaturedCollectionsLight = () => {
   const { products, loading, error } = useProducts();
-  const [addedToCart, setAddedToCart] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<null | ReturnType<typeof mapProduct>>(null);
 
   // Helper to transform API product to frontend format
   const mapProduct = (product: Product, index: number) => ({
-    id: product._id,
+    _id: product._id,
     name: product.name,
-    designer: product.designer,
+    description: product.description,
     price: product.price,
-    originalPrice: product.price * 1.3, // Adding 30% as "original" price for display
     images: product.images.length ? product.images : [""],
+    stock: product.stock,
+    category: product.category,
+    attributes: {
+      ...product.attributes,
+      Colorway: product.attributes?.Colorway,
+      ReleaseDate: product.attributes?.ReleaseDate,
+      Size: product.attributes?.Size,
+    },
+    createdAt: product.createdAt,
+    originalPrice: product.price * 1.3, // Adding 30% as "original" price for display
     rating: 4.5 + (index % 5 * 0.1), // Generate ratings between 4.5-5.0
     isNew: new Date(product.createdAt).getTime() > Date.now() - 30 * 24 * 60 * 60 * 1000, // Mark as new if created in last 30 days
-    attributes: product.attributes,
-    stock: product.stock
   });
+
+  const [addedToCart, setAddedToCart] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<null | ReturnType<typeof mapProduct>>(null);
 
   const trendingProducts = products.map(mapProduct);
 
@@ -399,7 +371,7 @@ const FeaturedCollectionsLight = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {trendingProducts.map((product, index) => (
             <ProductCard
-              key={product.id}
+              key={product._id}
               product={product}
               onQuickView={() => setSelectedProduct(product)}
               onAddToCart={() => handleAddToCart()}
