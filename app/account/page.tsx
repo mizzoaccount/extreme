@@ -337,11 +337,11 @@ const ProfilePage = () => {
   };
 
   // Format products for the AdminTable
-  const formattedProducts = products.map((product: Product) => ({
+  const formattedProducts = products.map((product: any) => ({
     id: product._id,
     name: product.name,
-    designer: product.designer,
-    category: `${product.category.main}`,
+    designer: product.designer ?? "",
+    category: product.category?.main ?? "",
     price: product.price,
     stock: product.stock,
     rawData: product,
