@@ -626,11 +626,11 @@ export const ReviewOrder = ({ onBack }: ReviewOrderProps) => {
       name: paymentMethods.find((m) => m.id === paymentMethod)?.name,
     },
   },
-  items: items.map((item: OrderItem) => ({
+  items: items.map((item) => ({
     productId: item.id,
     name: item.name,
-    designer: item.designer,
-    size: item.size,
+    designer: (item as any).designer,
+    size: (item as any).size,
     quantity: item.quantity,
     price: item.price,
     image: item.image,
@@ -700,7 +700,7 @@ console.log("Sending order data:", JSON.stringify(orderData, null, 2));
         <h3 className="text-lg font-medium text-gray-900 mb-4">Order Summary</h3>
         <div className="space-y-4">
           {items.map((item) => (
-            <div key={`${item.id}-${item.size}`} className="flex justify-between">
+            <div key={`${item.id}`} className="flex justify-between">
               {/* ... item details ... */}
               <p className="font-medium">Ksh {(item.price * item.quantity).toFixed(2)}</p>
             </div>

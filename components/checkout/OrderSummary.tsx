@@ -28,7 +28,7 @@ export const OrderSummary = () => {
       <h2 className="text-xl font-bold text-gray-900 mb-6">Order Summary</h2>
       <div className="space-y-4">
         {items.map((item) => (
-          <div key={`${item.id}-${item.size}`} className="flex justify-between">
+          <div key={`${item.id}`} className="flex justify-between"> 
             <div className="flex items-center space-x-4">
               <div className="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden">
                 <img
@@ -40,7 +40,7 @@ export const OrderSummary = () => {
               <div>
                 <h4 className="font-medium">{item.name}</h4>
                 <p className="text-sm text-gray-500">
-                  Size: {item.size} • Qty: {item.quantity}
+               • Qty: {item.quantity}
                 </p>
               </div>
             </div>
